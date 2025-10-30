@@ -15,7 +15,8 @@ const laundryConfig = {
     slug: ("TURBOPACK compile-time value", "clean-fresh-laundry") || 'clean-fresh-laundry',
     apiKey: ("TURBOPACK compile-time value", "wp_2hmoc70526zqpwdqc3keo") || '',
     // SaaS platform URLs
-    saasUrl: ("TURBOPACK compile-time value", "http://localhost:3000") || 'http://localhost:3000',
+    // Use empty string to make API calls relative to the current Next.js app
+    saasUrl: ("TURBOPACK compile-time value", "") || '',
     siteUrl: ("TURBOPACK compile-time value", "http://localhost:3001") || 'http://localhost:3001',
     // Branding (will be fetched from API)
     name: 'Clean & Fresh Laundry',
@@ -42,42 +43,88 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     "getCheckoutUrl",
     ()=>getCheckoutUrl
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/axios/lib/axios.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/config.ts [app-client] (ecmascript)");
 ;
-;
-// Create axios instance with default config
-const api = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].create({
-    baseURL: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl,
-    headers: {
-        'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
-        'Content-Type': 'application/json'
+// Helper function to build full URL
+const getFullUrl = (path)=>{
+    console.log('getFullUrl called with path:', path);
+    console.log('saasUrl:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl);
+    console.log('window:', ("TURBOPACK compile-time value", "object"));
+    // If saasUrl is set, use it as base
+    if (__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl) {
+        console.log('Using saasUrl:', `${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl}${path}`);
+        return `${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl}${path}`;
     }
-});
+    // For server-side calls without saasUrl, construct full URL
+    // This works in development when the API routes are in the same Next.js app
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    // For client-side calls, use relative path (works with same-origin API routes)
+    console.log('Client-side relative path:', path);
+    return path;
+};
 const fetchLaundryInfo = async ()=>{
-    const response = await api.get(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/info`);
-    return response.data;
+    const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/info`);
+    console.log('Fetching laundry info from:', url);
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
+                'Content-Type': 'application/json'
+            },
+            cache: 'no-store'
+        });
+        if (!response.ok) {
+            throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Error fetching laundry info:', error);
+        throw error;
+    }
 };
 const fetchProducts = async ()=>{
-    const response = await api.get(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/products`);
-    return response.data;
+    const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/products`);
+    const response = await fetch(url, {
+        headers: {
+            'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
+            'Content-Type': 'application/json'
+        },
+        cache: 'no-store'
+    });
+    if (!response.ok) {
+        throw new Error(`Failed to fetch products: ${response.statusText}`);
+    }
+    return response.json();
 };
 const createOrder = async (cartItems, customerInfo, specialInstructions, pickupScheduledAt)=>{
     try {
-        const response = await api.post('/api/checkout', {
-            laundrySlug: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug,
-            cartItems: cartItems.map((item)=>({
-                    productId: item.productId,
-                    serviceType: item.serviceType,
-                    quantity: item.quantity
-                })),
-            customerInfo,
-            specialInstructions,
-            pickupScheduledAt
+        const url = getFullUrl('/api/checkout');
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                laundrySlug: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug,
+                cartItems: cartItems.map((item)=>({
+                        productId: item.productId,
+                        serviceType: item.serviceType,
+                        quantity: item.quantity
+                    })),
+                customerInfo,
+                specialInstructions,
+                pickupScheduledAt
+            })
         });
-        return response.data;
+        if (!response.ok) {
+            const errorData = await response.json().catch(()=>({}));
+            throw new Error(errorData.error || 'Failed to create order');
+        }
+        return response.json();
     } catch (error) {
-        throw new Error(error.response?.data?.error || 'Failed to create order');
+        throw new Error(error.message || 'Failed to create order');
     }
 };
 const getCheckoutUrl = (cartItems, customerInfo)=>{

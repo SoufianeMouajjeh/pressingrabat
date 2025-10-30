@@ -1,0 +1,3 @@
+{
+  "/api/public/laundry/[slug]/products/route": "app/api/public/laundry/[slug]/products/route.js"
+}

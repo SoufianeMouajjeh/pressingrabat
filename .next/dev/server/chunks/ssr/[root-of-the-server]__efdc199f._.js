@@ -92,7 +92,8 @@ const laundryConfig = {
     slug: ("TURBOPACK compile-time value", "clean-fresh-laundry") || 'clean-fresh-laundry',
     apiKey: ("TURBOPACK compile-time value", "wp_2hmoc70526zqpwdqc3keo") || '',
     // SaaS platform URLs
-    saasUrl: ("TURBOPACK compile-time value", "http://localhost:3000") || 'http://localhost:3000',
+    // Use empty string to make API calls relative to the current Next.js app
+    saasUrl: ("TURBOPACK compile-time value", "http://localhost:3000") || '',
     siteUrl: ("TURBOPACK compile-time value", "http://localhost:3001") || 'http://localhost:3001',
     // Branding (will be fetched from API)
     name: 'Clean & Fresh Laundry',
@@ -121,8 +122,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app
 ;
 ;
 // Create axios instance with default config
+// Only set baseURL if saasUrl is not empty (for external API)
 const api = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].create({
-    baseURL: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl,
+    ...__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl && {
+        baseURL: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl
+    },
     headers: {
         'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
         'Content-Type': 'application/json'

@@ -9,7 +9,8 @@ export const laundryConfig = {
   apiKey: process.env.NEXT_PUBLIC_LAUNDRY_API_KEY || '',
   
   // SaaS platform URLs
-  saasUrl: process.env.NEXT_PUBLIC_SAAS_URL || 'http://localhost:3000',
+  // Use empty string to make API calls relative to the current Next.js app
+  saasUrl: process.env.NEXT_PUBLIC_SAAS_URL || '',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001',
   
   // Branding (will be fetched from API)

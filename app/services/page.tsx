@@ -59,7 +59,7 @@ export default function ServicesPage() {
     const serviceId = selectedServices[product.id];
     const service = product.services?.find(s => s.id === serviceId);
     
-    if (!service) {
+    if (!service || !service.service) {
       alert('Please select a service');
       return;
     }
@@ -70,7 +70,7 @@ export default function ServicesPage() {
       serviceId: service.id,
       serviceName: getServiceName(service.service),
       serviceType: service.service,
-      price: product.price,
+      price: service.price || product.price,
       quantity: 1,
       imageUrl: product.image || undefined
     });
@@ -214,7 +214,7 @@ export default function ServicesPage() {
                       >
                         {product.services.map(service => (
                           <option key={service.id} value={service.id}>
-                            {getServiceName(service.service)} - ${product.price.toFixed(2)}
+                            {getServiceName(service.service)} - ${(service.price || product.price).toFixed(2)}
                           </option>
                         ))}
                       </select>

@@ -3,32 +3,80 @@
  * All requests include the API key for authentication
  */
 
-import axios from 'axios';
 import { laundryConfig, LaundryInfo, Product, CartItem, CustomerInfo } from './config';
 
-// Create axios instance with default config
-const api = axios.create({
-  baseURL: laundryConfig.saasUrl,
-  headers: {
-    'x-api-key': laundryConfig.apiKey,
-    'Content-Type': 'application/json',
-  },
-});
+// Helper function to build full URL
+const getFullUrl = (path: string): string => {
+  console.log('getFullUrl called with path:', path);
+  console.log('saasUrl:', laundryConfig.saasUrl);
+  console.log('window:', typeof window);
+  
+  // If saasUrl is set, use it as base
+  if (laundryConfig.saasUrl) {
+    console.log('Using saasUrl:', `${laundryConfig.saasUrl}${path}`);
+    return `${laundryConfig.saasUrl}${path}`;
+  }
+  
+  // For server-side calls without saasUrl, construct full URL
+  // This works in development when the API routes are in the same Next.js app
+  if (typeof window === 'undefined') {
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    const host = process.env.VERCEL_URL || `localhost:${process.env.PORT || 3000}`;
+    const fullUrl = `${protocol}://${host}${path}`;
+    console.log('Server-side URL:', fullUrl);
+    return fullUrl;
+  }
+  
+  // For client-side calls, use relative path (works with same-origin API routes)
+  console.log('Client-side relative path:', path);
+  return path;
+};
 
 /**
  * Fetch laundry information (branding, contact info)
  */
 export const fetchLaundryInfo = async (): Promise<LaundryInfo> => {
-  const response = await api.get(`/api/public/laundry/${laundryConfig.slug}/info`);
-  return response.data;
+  const url = getFullUrl(`/api/public/laundry/${laundryConfig.slug}/info`);
+  console.log('Fetching laundry info from:', url);
+  
+  try {
+    const response = await fetch(url, {
+      headers: {
+        'x-api-key': laundryConfig.apiKey,
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
+    }
+    
+    return response.json();
+  } catch (error) {
+    console.error('Error fetching laundry info:', error);
+    throw error;
+  }
 };
 
 /**
  * Fetch all products and services for this laundry
  */
 export const fetchProducts = async (): Promise<Product[]> => {
-  const response = await api.get(`/api/public/laundry/${laundryConfig.slug}/products`);
-  return response.data;
+  const url = getFullUrl(`/api/public/laundry/${laundryConfig.slug}/products`);
+  const response = await fetch(url, {
+    headers: {
+      'x-api-key': laundryConfig.apiKey,
+      'Content-Type': 'application/json',
+    },
+    cache: 'no-store',
+  });
+  
+  if (!response.ok) {
+    throw new Error(`Failed to fetch products: ${response.statusText}`);
+  }
+  
+  return response.json();
 };
 
 /**
@@ -42,21 +90,34 @@ export const createOrder = async (
   pickupScheduledAt?: string
 ): Promise<{ success: boolean; orderId: string; message: string }> => {
   try {
-    const response = await api.post('/api/checkout', {
-      laundrySlug: laundryConfig.slug,
-      cartItems: cartItems.map(item => ({
-        productId: item.productId,
-        serviceType: item.serviceType,
-        quantity: item.quantity,
-      })),
-      customerInfo,
-      specialInstructions,
-      pickupScheduledAt,
+    const url = getFullUrl('/api/checkout');
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'x-api-key': laundryConfig.apiKey,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        laundrySlug: laundryConfig.slug,
+        cartItems: cartItems.map(item => ({
+          productId: item.productId,
+          serviceType: item.serviceType,
+          quantity: item.quantity,
+        })),
+        customerInfo,
+        specialInstructions,
+        pickupScheduledAt,
+      }),
     });
     
-    return response.data;
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || 'Failed to create order');
+    }
+    
+    return response.json();
   } catch (error: any) {
-    throw new Error(error.response?.data?.error || 'Failed to create order');
+    throw new Error(error.message || 'Failed to create order');
   }
 };
 

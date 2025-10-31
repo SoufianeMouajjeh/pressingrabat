@@ -1,19 +1,121 @@
-[00:00:01.659] Server  LOG      ✓ Ready in 1109ms
-[00:00:05.001] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.016] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/products
-[00:00:06.016] Browser LOG     saasUrl: 
-[00:00:06.016] Browser LOG     window: object
-[00:00:06.016] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/products
-[00:00:06.016] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:00:06.016] Browser LOG     saasUrl: 
-[00:00:06.016] Browser LOG     window: object
-[00:00:06.016] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:00:06.016] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:00:06.737] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'toFixed')
-[00:00:54.506] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:00:54.577] Server  LOG      ✓ Compiled in 27ms
-[00:00:54.807] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:56.010] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:01.581] Server  LOG      ✓ Ready in 1085ms
+[00:00:05.967] Server  ERROR    ⨯ ./app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: /Users/macbook/Documents/pressingrabat/app/globals.css:1:1: `@theme` blocks must only contain custom properties or `@keyframes`.
+
+  @theme {
+>   @media (prefers-color-scheme: dark) {
+>     --color-background: #0a0a0a;
+>     --color-foreground: #ededed;
+>   }
+  }
+  
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (/Users/macbook/Documents/pressingrabat/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+
+
+[00:00:07.565] Browser ERROR   uncaughtError: Error: ./app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: /Users/macbook/Documents/pressingrabat/app/globals.css:1:1: `@theme` blocks must only contain custom properties or `@keyframes`.
+
+  @theme {
+>   @media (prefers-color-scheme: dark) {
+>     --color-background: #0a0a0a;
+>     --color-foreground: #ededed;
+>   }
+  }
+  
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (/Users/macbook/Documents/pressingrabat/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+
+
+[00:00:09.191] Browser ERROR   ./app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: /Users/macbook/Documents/pressingrabat/app/globals.css:1:1: `@theme` blocks must only contain custom properties or `@keyframes`.
+
+  @theme {
+>   @media (prefers-color-scheme: dark) {
+>     --color-background: #0a0a0a;
+>     --color-foreground: #ededed;
+>   }
+  }
+  
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (/Users/macbook/Documents/pressingrabat/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:00:09.191] Browser ERROR   ./app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: /Users/macbook/Documents/pressingrabat/app/globals.css:1:1: `@theme` blocks must only contain custom properties or `@keyframes`.
+
+  @theme {
+>   @media (prefers-color-scheme: dark) {
+>     --color-background: #0a0a0a;
+>     --color-foreground: #ededed;
+>   }
+  }
+  
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (/Users/macbook/Documents/pressingrabat/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:00:22.191] Browser ERROR   ./app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: /Users/macbook/Documents/pressingrabat/app/globals.css:1:1: `@theme` blocks must only contain custom properties or `@keyframes`.
+
+  @theme {
+>   @media (prefers-color-scheme: dark) {
+>     --color-background: #0a0a0a;
+>     --color-foreground: #ededed;
+>   }
+  }
+  
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (/Users/macbook/Documents/pressingrabat/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:00:38.088] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:35.937] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:36.076] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -31,7 +133,7 @@ It can also happen if the client has a browser extension installed which messes 
         <ReplaySsrOnlyErrors>
         <DevRootHTTPAccessFallbackBoundary>
           <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/services" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+            <HTTPAccessFallbackErrorBoundary pathname="/order-suc..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
               <RedirectBoundary>
                 <RedirectErrorBoundary router={{...}}>
                   <Head>
@@ -48,88 +150,9 @@ It can also happen if the client has a browser extension installed which messes 
                           >
                   ...
 
-[00:00:56.010] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/products
-[00:00:56.010] Browser LOG     saasUrl: 
-[00:00:56.010] Browser LOG     window: object
-[00:00:56.010] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/products
-[00:00:56.010] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:00:56.010] Browser LOG     saasUrl: 
-[00:00:56.010] Browser LOG     window: object
-[00:00:56.010] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:00:56.010] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:00:56.010] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'toFixed')
-[00:01:59.630] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:01:59.712] Server  LOG      ✓ Compiled in 28ms
-[00:01:59.987] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:01.010] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/products
-[00:02:01.010] Browser LOG     saasUrl: 
-[00:02:01.010] Browser LOG     window: object
-[00:02:01.010] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/products
-[00:02:01.010] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:01.010] Browser LOG     saasUrl: 
-[00:02:01.010] Browser LOG     window: object
-[00:02:01.010] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:01.010] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:02:09.930] Server  LOG      ✓ Compiled in 39ms
-[00:02:33.488] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:33.488] Browser LOG     saasUrl: 
-[00:02:33.488] Browser LOG     window: object
-[00:02:33.488] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:33.488] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:02:33.488] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:33.488] Browser LOG     saasUrl: 
-[00:02:33.488] Browser LOG     window: object
-[00:02:33.488] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:33.488] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:02:35.740] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:35.740] Browser LOG     saasUrl: 
-[00:02:35.740] Browser LOG     window: object
-[00:02:35.740] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:35.740] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:02:35.740] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:35.740] Browser LOG     saasUrl: 
-[00:02:35.740] Browser LOG     window: object
-[00:02:35.740] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:35.740] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:02:59.461] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:59.461] Browser LOG     saasUrl: 
-[00:02:59.461] Browser LOG     window: object
-[00:02:59.461] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:59.461] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:02:59.461] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:59.461] Browser LOG     saasUrl: 
-[00:02:59.461] Browser LOG     window: object
-[00:02:59.461] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:02:59.461] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:03:20.760] Browser LOG     getFullUrl called with path: /api/checkout
-[00:03:20.760] Browser LOG     saasUrl: 
-[00:03:20.760] Browser LOG     window: object
-[00:03:20.760] Browser LOG     Client-side relative path: /api/checkout
-[00:03:20.948] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/products
-[00:03:20.948] Browser LOG     saasUrl: 
-[00:03:20.948] Browser LOG     window: object
-[00:03:20.948] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/products
-[00:03:20.948] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:03:20.948] Browser LOG     saasUrl: 
-[00:03:20.948] Browser LOG     window: object
-[00:03:20.948] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:03:20.948] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:03:20.948] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/products
-[00:03:20.948] Browser LOG     saasUrl: 
-[00:03:20.948] Browser LOG     window: object
-[00:03:20.948] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/products
-[00:03:20.948] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:03:20.948] Browser LOG     saasUrl: 
-[00:03:20.948] Browser LOG     window: object
-[00:03:20.948] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:03:20.948] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:03:55.816] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:03:55.816] Browser LOG     saasUrl: 
-[00:03:55.816] Browser LOG     window: object
-[00:03:55.816] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:03:55.816] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
-[00:03:55.816] Browser LOG     getFullUrl called with path: /api/public/laundry/clean-fresh-laundry/info
-[00:03:55.816] Browser LOG     saasUrl: 
-[00:03:55.816] Browser LOG     window: object
-[00:03:55.816] Browser LOG     Client-side relative path: /api/public/laundry/clean-fresh-laundry/info
-[00:03:55.816] Browser LOG     Fetching laundry info from: /api/public/laundry/clean-fresh-laundry/info
+[01:17:50.894] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:24:55.031] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:25:36.388] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:34:37.361] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:37:58.064] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:40:18.733] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

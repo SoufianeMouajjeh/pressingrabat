@@ -12,12 +12,18 @@ function OrderSuccessContent() {
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
   const orderId = searchParams.get('orderId');
+  const status = searchParams.get('status');
 
   useEffect(() => {
     const loadLaundryInfo = async () => {
       try {
         const data = await fetchLaundryInfo();
         setLaundryInfo(data);
+        
+        // Clear cart after successful order
+        if (status === 'success' && typeof window !== 'undefined') {
+          localStorage.removeItem('clean-fresh-cart');
+        }
       } catch (error) {
         console.error('Failed to load laundry info:', error);
       } finally {
@@ -26,7 +32,7 @@ function OrderSuccessContent() {
     };
 
     loadLaundryInfo();
-  }, []);
+  }, [status]);
 
   if (loading) {
     return (

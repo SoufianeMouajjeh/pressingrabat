@@ -65,29 +65,46 @@ export default function CheckoutPage() {
         throw new Error('Please fill in all required fields');
       }
 
-      // Format customer info
-      const customerInfo = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        addressDetails: {
-          street: formData.street,
-          city: formData.city,
-          postalCode: formData.postalCode,
-          type: formData.addressType,
-        }
+      // Prepare order data
+      const addressDetails = {
+        street: formData.street,
+        city: formData.city,
+        postalCode: formData.postalCode,
+        type: formData.addressType,
       };
 
-      // Create order via SaaS API
-      const result = await createOrder(items, customerInfo);
+      // Get laundry config from environment
+      const saasUrl = process.env.NEXT_PUBLIC_SAAS_URL || 'http://localhost:3000';
+      const laundrySlug = process.env.NEXT_PUBLIC_LAUNDRY_SLUG || '';
+      const apiKey = process.env.NEXT_PUBLIC_LAUNDRY_API_KEY || '';
+      const returnUrl = `${window.location.origin}/order-success`;
 
-      // Clear cart
-      clearCart();
+      // Encode cart and address data as base64 to pass through URL
+      // This works because the data needs to cross domain boundaries
+      const orderData = {
+        cart: items,
+        address: addressDetails,
+        customer: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone
+        }
+      };
+      
+      const orderDataEncoded = btoa(JSON.stringify(orderData));
 
-      // Redirect to success page
-      router.push(`/order-success?orderId=${result.orderId}`);
+      // Redirect to SaaS complete-order page with all data in URL
+      const authUrl = new URL(`${saasUrl}/complete-order`);
+      authUrl.searchParams.set('laundrySlug', laundrySlug);
+      authUrl.searchParams.set('apiKey', apiKey);
+      authUrl.searchParams.set('returnUrl', returnUrl);
+      authUrl.searchParams.set('orderData', orderDataEncoded);
+      authUrl.searchParams.set('email', formData.email); // Pre-fill email
+      
+      window.location.href = authUrl.toString();
+      
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to create order');
+      setError(err instanceof Error ? err.message : 'Failed to proceed to checkout');
       setSubmitting(false);
     }
   };

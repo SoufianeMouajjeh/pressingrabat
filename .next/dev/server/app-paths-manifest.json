@@ -1,5 +1,4 @@
 {
-  "/api/checkout/route": "app/api/checkout/route.js",
   "/api/public/laundry/[slug]/info/route": "app/api/public/laundry/[slug]/info/route.js",
   "/api/public/laundry/[slug]/products/route": "app/api/public/laundry/[slug]/products/route.js",
   "/cart/page": "app/cart/page.js",

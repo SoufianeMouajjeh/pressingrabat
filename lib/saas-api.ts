@@ -7,13 +7,8 @@ import { laundryConfig, LaundryInfo, Product, CartItem, CustomerInfo } from './c
 
 // Helper function to build full URL
 const getFullUrl = (path: string): string => {
-  console.log('getFullUrl called with path:', path);
-  console.log('saasUrl:', laundryConfig.saasUrl);
-  console.log('window:', typeof window);
-  
   // If saasUrl is set, use it as base
   if (laundryConfig.saasUrl) {
-    console.log('Using saasUrl:', `${laundryConfig.saasUrl}${path}`);
     return `${laundryConfig.saasUrl}${path}`;
   }
   
@@ -22,13 +17,10 @@ const getFullUrl = (path: string): string => {
   if (typeof window === 'undefined') {
     const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
     const host = process.env.VERCEL_URL || `localhost:${process.env.PORT || 3000}`;
-    const fullUrl = `${protocol}://${host}${path}`;
-    console.log('Server-side URL:', fullUrl);
-    return fullUrl;
+    return `${protocol}://${host}${path}`;
   }
   
   // For client-side calls, use relative path (works with same-origin API routes)
-  console.log('Client-side relative path:', path);
   return path;
 };
 
@@ -37,26 +29,20 @@ const getFullUrl = (path: string): string => {
  */
 export const fetchLaundryInfo = async (): Promise<LaundryInfo> => {
   const url = getFullUrl(`/api/public/laundry/${laundryConfig.slug}/info`);
-  console.log('Fetching laundry info from:', url);
   
-  try {
-    const response = await fetch(url, {
-      headers: {
-        'x-api-key': laundryConfig.apiKey,
-        'Content-Type': 'application/json',
-      },
-      cache: 'no-store',
-    });
-    
-    if (!response.ok) {
-      throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
-    }
-    
-    return response.json();
-  } catch (error) {
-    console.error('Error fetching laundry info:', error);
-    throw error;
+  const response = await fetch(url, {
+    headers: {
+      'x-api-key': laundryConfig.apiKey,
+      'Content-Type': 'application/json',
+    },
+    cache: 'no-store',
+  });
+  
+  if (!response.ok) {
+    throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
   }
+  
+  return response.json();
 };
 
 /**

@@ -47,12 +47,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app
 ;
 // Helper function to build full URL
 const getFullUrl = (path)=>{
-    console.log('getFullUrl called with path:', path);
-    console.log('saasUrl:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl);
-    console.log('window:', ("TURBOPACK compile-time value", "object"));
     // If saasUrl is set, use it as base
     if (__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl) {
-        console.log('Using saasUrl:', `${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl}${path}`);
         return `${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl}${path}`;
     }
     // For server-side calls without saasUrl, construct full URL
@@ -60,28 +56,21 @@ const getFullUrl = (path)=>{
     if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
     // For client-side calls, use relative path (works with same-origin API routes)
-    console.log('Client-side relative path:', path);
     return path;
 };
 const fetchLaundryInfo = async ()=>{
     const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/info`);
-    console.log('Fetching laundry info from:', url);
-    try {
-        const response = await fetch(url, {
-            headers: {
-                'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
-                'Content-Type': 'application/json'
-            },
-            cache: 'no-store'
-        });
-        if (!response.ok) {
-            throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
-        }
-        return response.json();
-    } catch (error) {
-        console.error('Error fetching laundry info:', error);
-        throw error;
+    const response = await fetch(url, {
+        headers: {
+            'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
+            'Content-Type': 'application/json'
+        },
+        cache: 'no-store'
+    });
+    if (!response.ok) {
+        throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
     }
+    return response.json();
 };
 const fetchProducts = async ()=>{
     const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/products`);

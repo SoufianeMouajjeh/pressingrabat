@@ -2,7 +2,7 @@
 
 ## 🚀 Quick Deploy Summary
 
-This guide covers deploying the Clean & Fresh Laundry website to production with Vercel.
+This guide covers deploying the Clean & Fresh Laundry website to Vercel and connecting it to your SaaS platform.
 
 ## 📋 Pre-Deployment Checklist
 
@@ -11,13 +11,23 @@ This guide covers deploying the Clean & Fresh Laundry website to production with
 - [x] API integration working
 - [x] Cart functionality working
 - [x] Checkout flow working
-- [ ] SaaS backend deployed to production
-- [ ] Production API keys generated
+- [x] Debug logs removed for production
+- [ ] SaaS platform URL confirmed
+- [ ] Production API keys obtained
 - [ ] Domain name registered (optional)
+
+## 🔑 Required Information
+
+Before deploying, gather these from your SaaS platform:
+
+1. **SaaS Platform URL**: `https://your-saas-platform.com`
+2. **Laundry Slug**: Unique identifier (e.g., `clean-fresh-laundry`)
+3. **API Key**: Authentication key from your SaaS admin panel
 
 ## 🌐 Deploying to Vercel
 
 ### Step 1: Push to GitHub
+```
 
 ```bash
 cd /Users/macbook/Documents/pressingrabat

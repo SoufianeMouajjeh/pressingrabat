@@ -93,3 +93,78 @@
 [00:00:29.032] Browser LOG     🏢 Response status: 200
 [00:00:29.032] Browser LOG     🏢 Response ok: true
 [00:00:29.032] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:04:34.657] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:34.657] Browser LOG     🔧 Environment Variables Check: {"NEXT_PUBLIC_LAUNDRY_API_KEY":"wp_2hmoc70...","NEXT_PUBLIC_LAUNDRY_SLUG":"clean-fresh-laundry","NEXT_PUBLIC_SAAS_URL":""}
+[00:04:34.657] Browser LOG     ⚙️ Laundry Config Loaded: {"apiKey":"wp_2hmoc70...","saasUrl":"http://localhost:3000","siteUrl":"http://localhost:3001","slug":"clean-fresh-laundry"}
+[00:04:34.657] Browser LOG     📦 saas-api.ts loaded - VERSION 2.0.0
+[00:04:34.791] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:04:34.791] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:04:34.791] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:04:34.791] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:04:34.791] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:04:34.791] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:04:35.155] Browser LOG     🏢 Response status: 200
+[00:04:35.155] Browser LOG     🏢 Response ok: true
+[00:04:35.155] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:04:41.065] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/products
+[00:04:41.065] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:04:41.065] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:04:41.065] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:04:41.065] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:04:41.065] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:04:41.065] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:04:41.065] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/products
+[00:04:41.065] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:04:41.065] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:04:41.065] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:04:41.065] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:04:41.065] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:04:41.065] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:04:41.631] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/1.webp" "received" null
+[00:04:41.641] Browser LOG     🏢 Response status: 200
+[00:04:41.641] Browser LOG     🏢 Response ok: true
+[00:04:41.641] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:04:41.641] Browser LOG     🏢 Response status: 200
+[00:04:41.641] Browser LOG     🏢 Response ok: true
+[00:04:41.641] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:04:43.103] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:04:43.103] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:04:43.103] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:04:43.103] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:04:43.103] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:04:43.103] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:04:43.103] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:04:43.103] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:04:43.103] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:04:43.103] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:04:43.103] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:04:43.103] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:04:43.291] Browser LOG     🏢 Response status: 200
+[00:04:43.291] Browser LOG     🏢 Response ok: true
+[00:04:43.291] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:04:43.291] Browser LOG     🏢 Response status: 200
+[00:04:43.291] Browser LOG     🏢 Response ok: true
+[00:04:43.291] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:06:43.661] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:43.661] Browser LOG     🔧 Environment Variables Check: {"NEXT_PUBLIC_LAUNDRY_API_KEY":"wp_2hmoc70...","NEXT_PUBLIC_LAUNDRY_SLUG":"clean-fresh-laundry","NEXT_PUBLIC_SAAS_URL":""}
+[00:06:43.661] Browser LOG     ⚙️ Laundry Config Loaded: {"apiKey":"wp_2hmoc70...","saasUrl":"http://localhost:3000","siteUrl":"http://localhost:3001","slug":"clean-fresh-laundry"}
+[00:06:43.661] Browser LOG     📦 saas-api.ts loaded - VERSION 2.0.0
+[00:06:43.802] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:06:43.803] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:06:43.803] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:06:43.803] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:06:43.803] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:06:43.803] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:06:44.398] Browser LOG     🏢 Response status: 200
+[00:06:44.399] Browser LOG     🏢 Response ok: true
+[00:06:44.399] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:07:01.166] Server  LOG      ✓ Compiled in 113ms
+[00:07:01.734] Browser LOG     ⚙️ Laundry Config Loaded: {"apiKey":"wp_2hmoc70...","saasUrl":"","siteUrl":"http://localhost:3001","slug":"clean-fresh-laundry"}
+[00:07:01.734] Browser LOG     📦 saas-api.ts loaded - VERSION 2.0.0
+[00:07:13.422] Server  LOG      ✓ Compiled in 151ms
+[00:07:13.500] Browser LOG     ⚙️ Laundry Config Loaded: {"apiKey":"wp_2hmoc70...","saasUrl":"","siteUrl":"http://localhost:3001","slug":"clean-fresh-laundry"}
+[00:07:13.500] Browser LOG     📦 saas-api.ts loaded - VERSION 2.0.0
+[00:07:29.743] Server  LOG      ✓ Compiled in 82ms
+[00:07:30.753] Browser LOG     📦 saas-api.ts loaded - VERSION 2.0.0
+[00:08:03.878] Server  LOG      ✓ Compiled in 35ms
+[00:08:04.752] Browser LOG     📦 saas-api.ts loaded - VERSION 2.0.0

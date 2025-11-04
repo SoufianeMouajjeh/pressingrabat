@@ -27,25 +27,25 @@ module.exports = mod;
 "use strict";
 
 /**
+ * Configuration f  primaryColor: '#3B82F6',
+}
+
+export type LaundryInfo = {resh Laundry Website
+ * Connected to the main SaaS platform
+ */ /**
  * Configuration for Clean & Fresh Laundry Website
  * Connected to the main SaaS platform
- */ // Debug: Log environment variables
-__turbopack_context__.s([
+ */ __turbopack_context__.s([
     "laundryConfig",
     ()=>laundryConfig
 ]);
-console.log('🔧 Environment Variables Check:', {
-    NEXT_PUBLIC_SAAS_URL: ("TURBOPACK compile-time value", ""),
-    NEXT_PUBLIC_LAUNDRY_SLUG: ("TURBOPACK compile-time value", "clean-fresh-laundry"),
-    NEXT_PUBLIC_LAUNDRY_API_KEY: ("TURBOPACK compile-time value", "wp_2hmoc70526zqpwdqc3keo")?.substring(0, 10) + '...'
-});
 const laundryConfig = {
     // Laundry identification
-    slug: 'clean-fresh-laundry',
-    apiKey: 'wp_2hmoc70526zqpwdqc3keo',
-    // SaaS platform URLs - HARDCODED for development
-    saasUrl: 'http://localhost:3000',
-    siteUrl: 'http://localhost:3001',
+    slug: ("TURBOPACK compile-time value", "clean-fresh-laundry") || 'clean-fresh-laundry',
+    apiKey: ("TURBOPACK compile-time value", "wp_2hmoc70526zqpwdqc3keo") || '',
+    // SaaS platform URLs
+    saasUrl: ("TURBOPACK compile-time value", "") || '',
+    siteUrl: ("TURBOPACK compile-time value", "http://localhost:3001") || 'http://localhost:3001',
     // Branding (will be fetched from API)
     name: 'Clean & Fresh Laundry',
     logo: null,
@@ -63,7 +63,24 @@ console.log('⚙️ Laundry Config Loaded:', {
 "use strict";
 
 /**
- * API Client for communicating with the SaaS platform
+ * API C// Helper function to build full URL
+const getFullUrl = (path: string): string => {
+  // If saasUrl is set, use it as base
+  if (laundryConfig.saasUrl) {
+    return `${laundryConfig.saasUrl}${path}`;
+  }
+  
+  // For server-side calls without saasUrl, construct full URL
+  // This works in development when the API routes are in the same Next.js app
+  if (typeof window === 'undefined') {
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    const host = process.env.VERCEL_URL || `localhost:${process.env.PORT || 3000}`;
+    return `${protocol}://${host}${path}`;
+  }
+  
+  // For client-side calls, use relative path (works with same-origin API routes)
+  return path;
+};or communicating with the SaaS platform
  * All requests include the API key for authentication
  * 
  * VERSION: 2.0.0 - Updated with fallback URLs and extensive debugging
@@ -89,32 +106,18 @@ const getFullUrl = (path)=>{
     return fullUrl;
 };
 const fetchLaundryInfo = async ()=>{
-    console.log('🏢 fetchLaundryInfo - Starting...');
-    console.log('🏢 laundryConfig.slug:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].slug);
-    console.log('🏢 laundryConfig.apiKey:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey?.substring(0, 10) + '...');
-    console.log('🏢 laundryConfig.saasUrl:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl);
     const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/info`);
-    console.log('🏢 Final URL to fetch:', url);
-    try {
-        const response = await fetch(url, {
-            headers: {
-                'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
-                'Content-Type': 'application/json'
-            },
-            cache: 'no-store'
-        });
-        console.log('🏢 Response status:', response.status);
-        console.log('🏢 Response ok:', response.ok);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
-        }
-        const data = await response.json();
-        console.log('🏢 Successfully fetched laundry info:', data);
-        return data;
-    } catch (error) {
-        console.error('❌ fetchLaundryInfo error:', error);
-        throw error;
+    const response = await fetch(url, {
+        headers: {
+            'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
+            'Content-Type': 'application/json'
+        },
+        cache: 'no-store'
+    });
+    if (!response.ok) {
+        throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
     }
+    return response.json();
 };
 const fetchProducts = async ()=>{
     const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/products`);

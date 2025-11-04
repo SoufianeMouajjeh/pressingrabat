@@ -1,23 +1,24 @@
 /**
+ * Configuration f  primaryColor: '#3B82F6',
+}
+
+export type LaundryInfo = {resh Laundry Website
+ * Connected to the main SaaS platform
+ */
+
+/**
  * Configuration for Clean & Fresh Laundry Website
  * Connected to the main SaaS platform
  */
 
-// Debug: Log environment variables
-console.log('🔧 Environment Variables Check:', {
-  NEXT_PUBLIC_SAAS_URL: process.env.NEXT_PUBLIC_SAAS_URL,
-  NEXT_PUBLIC_LAUNDRY_SLUG: process.env.NEXT_PUBLIC_LAUNDRY_SLUG,
-  NEXT_PUBLIC_LAUNDRY_API_KEY: process.env.NEXT_PUBLIC_LAUNDRY_API_KEY?.substring(0, 10) + '...',
-});
-
 export const laundryConfig = {
   // Laundry identification
-  slug: 'clean-fresh-laundry',
-  apiKey: 'wp_2hmoc70526zqpwdqc3keo',
+  slug: process.env.NEXT_PUBLIC_LAUNDRY_SLUG || 'clean-fresh-laundry',
+  apiKey: process.env.NEXT_PUBLIC_LAUNDRY_API_KEY || '',
   
-  // SaaS platform URLs - HARDCODED for development
-  saasUrl: 'http://localhost:3000',
-  siteUrl: 'http://localhost:3001',
+  // SaaS platform URLs
+  saasUrl: process.env.NEXT_PUBLIC_SAAS_URL || '',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001',
   
   // Branding (will be fetched from API)
   name: 'Clean & Fresh Laundry',

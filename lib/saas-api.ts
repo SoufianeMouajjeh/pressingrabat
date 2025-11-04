@@ -1,9 +1,16 @@
 /**
- * API C// Helper function to build full URL
+ * API Client for communicating with the SaaS platform
+ * All requests include the API key for authentication
+ */
+
+import { laundryConfig, LaundryInfo, Product, CartItem, CustomerInfo } from './config';
+
+// Helper function to build full URL
 const getFullUrl = (path: string): string => {
-  // If saasUrl is set, use it as base
+  // If saasUrl is set, use it as base (remove trailing slash if present)
   if (laundryConfig.saasUrl) {
-    return `${laundryConfig.saasUrl}${path}`;
+    const baseUrl = laundryConfig.saasUrl.replace(/\/$/, ''); // Remove trailing slash
+    return `${baseUrl}${path}`;
   }
   
   // For server-side calls without saasUrl, construct full URL
@@ -16,23 +23,6 @@ const getFullUrl = (path: string): string => {
   
   // For client-side calls, use relative path (works with same-origin API routes)
   return path;
-};or communicating with the SaaS platform
- * All requests include the API key for authentication
- * 
- * VERSION: 2.0.0 - Updated with fallback URLs and extensive debugging
- */
-
-// Force console log to verify this file is loaded
-console.log('📦 saas-api.ts loaded - VERSION 2.0.0');
-
-import { laundryConfig, LaundryInfo, Product, CartItem, CustomerInfo } from './config';
-
-// Helper function to build full URL - SIMPLIFIED
-const getFullUrl = (path: string): string => {
-  // Always use the SaaS URL from config (hardcoded to localhost:3000)
-  const fullUrl = `${laundryConfig.saasUrl}${path}`;
-  console.log('🔗 API URL:', fullUrl);
-  return fullUrl;
 };
 
 /**

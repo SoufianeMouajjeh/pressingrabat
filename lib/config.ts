@@ -26,14 +26,6 @@ export const laundryConfig = {
   primaryColor: '#3B82F6',
 }
 
-// Debug: Log final config
-console.log('⚙️ Laundry Config Loaded:', {
-  slug: laundryConfig.slug,
-  apiKey: laundryConfig.apiKey.substring(0, 10) + '...',
-  saasUrl: laundryConfig.saasUrl,
-  siteUrl: laundryConfig.siteUrl,
-});
-
 export type LaundryInfo = {
   id: string;
   name: string;

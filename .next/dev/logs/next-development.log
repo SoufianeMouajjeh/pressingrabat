@@ -168,3 +168,8 @@
 [00:07:30.753] Browser LOG     📦 saas-api.ts loaded - VERSION 2.0.0
 [00:08:03.878] Server  LOG      ✓ Compiled in 35ms
 [00:08:04.752] Browser LOG     📦 saas-api.ts loaded - VERSION 2.0.0
+[00:24:43.119] Server  LOG        Reload env: .env.local
+[00:31:52.456] Server  LOG        Reload env: .env.local
+[00:31:54.094] Server  LOG        Reload env: .env.local
+[00:31:55.827] Server  LOG        Reload env: .env.local
+[00:32:44.488] Server  LOG      ✓ Compiled in 28ms

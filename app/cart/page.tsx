@@ -38,8 +38,35 @@ export default function CartPage() {
     }
   };
 
-  const handleProceedToCheckout = () => {
-    router.push('/checkout');
+  const handleCheckout = () => {
+    // Store cart data in sessionStorage
+    const cartData = {
+      items: items,
+      total: getTotalPrice(),
+      timestamp: Date.now()
+    };
+    sessionStorage.setItem('pendingOrderCart', JSON.stringify(cartData));
+    
+    // Prepare order data for SaaS
+    const saasUrl = process.env.NEXT_PUBLIC_SAAS_URL || 'http://localhost:3000';
+    const laundrySlug = process.env.NEXT_PUBLIC_LAUNDRY_SLUG || 'clean-fresh-laundry';
+    const apiKey = process.env.NEXT_PUBLIC_LAUNDRY_API_KEY || 'wp_2hmoc70526zqpwdqc3keo';
+    const returnUrl = `${window.location.origin}/order-success`;
+    
+    // Encode cart items for URL
+    const orderData = {
+      cart: items
+    };
+    const orderDataEncoded = btoa(JSON.stringify(orderData));
+    
+    // Redirect to SaaS authentication/checkout
+    const checkoutUrl = new URL(`${saasUrl}/checkout-flow`);
+    checkoutUrl.searchParams.set('laundrySlug', laundrySlug);
+    checkoutUrl.searchParams.set('apiKey', apiKey);
+    checkoutUrl.searchParams.set('returnUrl', returnUrl);
+    checkoutUrl.searchParams.set('orderData', orderDataEncoded);
+    
+    window.location.href = checkoutUrl.toString();
   };
 
   if (loading) {
@@ -212,10 +239,10 @@ export default function CartPage() {
                 </div>
 
                 <button
-                  onClick={handleProceedToCheckout}
+                  onClick={handleCheckout}
                   className="w-full bg-blue-600 text-white py-4 px-4 rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg"
                 >
-                  Proceed to Checkout
+                  Checkout
                 </button>
 
                 <Link

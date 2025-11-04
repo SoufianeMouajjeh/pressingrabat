@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>Testing SaaS API</h1>
+    <button onclick="testAPI()">Test API Call</button>
+    <pre id="result"></pre>
+
+    <script>
+        async function testAPI() {
+            const resultEl = document.getElementById('result');
+            resultEl.textContent = 'Testing...';
+            
+            try {
+                console.log('Making request to: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info');
+                
+                const response = await fetch('http://localhost:3000/api/public/laundry/clean-fresh-laundry/info', {
+                    headers: {
+                        'x-api-key': 'wp_2hmoc70526zqpwdqc3keo',
+                        'Content-Type': 'application/json',
+                    },
+                    cache: 'no-store',
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                resultEl.textContent = '✅ SUCCESS!\n\n' + JSON.stringify(data, null, 2);
+                console.log('Data:', data);
+                
+            } catch (error) {
+                resultEl.textContent = '❌ ERROR:\n\n' + error.toString();
+                console.error('Error:', error);
+            }
+        }
+        
+        // Auto-test on load
+        window.addEventListener('load', testAPI);
+    </script>
+</body>
+</html>

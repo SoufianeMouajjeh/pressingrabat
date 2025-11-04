@@ -1,48 +1,58 @@
 /**
  * API Client for communicating with the SaaS platform
  * All requests include the API key for authentication
+ * 
+ * VERSION: 2.0.0 - Updated with fallback URLs and extensive debugging
  */
+
+// Force console log to verify this file is loaded
+console.log('📦 saas-api.ts loaded - VERSION 2.0.0');
 
 import { laundryConfig, LaundryInfo, Product, CartItem, CustomerInfo } from './config';
 
-// Helper function to build full URL
+// Helper function to build full URL - SIMPLIFIED
 const getFullUrl = (path: string): string => {
-  // If saasUrl is set, use it as base
-  if (laundryConfig.saasUrl) {
-    return `${laundryConfig.saasUrl}${path}`;
-  }
-  
-  // For server-side calls without saasUrl, construct full URL
-  // This works in development when the API routes are in the same Next.js app
-  if (typeof window === 'undefined') {
-    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-    const host = process.env.VERCEL_URL || `localhost:${process.env.PORT || 3000}`;
-    return `${protocol}://${host}${path}`;
-  }
-  
-  // For client-side calls, use relative path (works with same-origin API routes)
-  return path;
+  // Always use the SaaS URL from config (hardcoded to localhost:3000)
+  const fullUrl = `${laundryConfig.saasUrl}${path}`;
+  console.log('🔗 API URL:', fullUrl);
+  return fullUrl;
 };
 
 /**
  * Fetch laundry information (branding, contact info)
  */
 export const fetchLaundryInfo = async (): Promise<LaundryInfo> => {
+  console.log('🏢 fetchLaundryInfo - Starting...');
+  console.log('🏢 laundryConfig.slug:', laundryConfig.slug);
+  console.log('🏢 laundryConfig.apiKey:', laundryConfig.apiKey?.substring(0, 10) + '...');
+  console.log('🏢 laundryConfig.saasUrl:', laundryConfig.saasUrl);
+  
   const url = getFullUrl(`/api/public/laundry/${laundryConfig.slug}/info`);
+  console.log('🏢 Final URL to fetch:', url);
   
-  const response = await fetch(url, {
-    headers: {
-      'x-api-key': laundryConfig.apiKey,
-      'Content-Type': 'application/json',
-    },
-    cache: 'no-store',
-  });
-  
-  if (!response.ok) {
-    throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
+  try {
+    const response = await fetch(url, {
+      headers: {
+        'x-api-key': laundryConfig.apiKey,
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+    
+    console.log('🏢 Response status:', response.status);
+    console.log('🏢 Response ok:', response.ok);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
+    }
+    
+    const data = await response.json();
+    console.log('🏢 Successfully fetched laundry info:', data);
+    return data;
+  } catch (error) {
+    console.error('❌ fetchLaundryInfo error:', error);
+    throw error;
   }
-  
-  return response.json();
 };
 
 /**

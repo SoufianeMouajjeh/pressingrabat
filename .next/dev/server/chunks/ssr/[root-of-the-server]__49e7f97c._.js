@@ -11,23 +11,35 @@ module.exports = mod;
 /**
  * Configuration for Clean & Fresh Laundry Website
  * Connected to the main SaaS platform
- */ __turbopack_context__.s([
+ */ // Debug: Log environment variables
+__turbopack_context__.s([
     "laundryConfig",
     ()=>laundryConfig
 ]);
+console.log('🔧 Environment Variables Check:', {
+    NEXT_PUBLIC_SAAS_URL: ("TURBOPACK compile-time value", ""),
+    NEXT_PUBLIC_LAUNDRY_SLUG: ("TURBOPACK compile-time value", "clean-fresh-laundry"),
+    NEXT_PUBLIC_LAUNDRY_API_KEY: ("TURBOPACK compile-time value", "wp_2hmoc70526zqpwdqc3keo")?.substring(0, 10) + '...'
+});
 const laundryConfig = {
     // Laundry identification
-    slug: ("TURBOPACK compile-time value", "clean-fresh-laundry") || 'clean-fresh-laundry',
-    apiKey: ("TURBOPACK compile-time value", "wp_2hmoc70526zqpwdqc3keo") || '',
-    // SaaS platform URLs
-    // Use empty string to make API calls relative to the current Next.js app
-    saasUrl: ("TURBOPACK compile-time value", "") || '',
-    siteUrl: ("TURBOPACK compile-time value", "http://localhost:3001") || 'http://localhost:3001',
+    slug: 'clean-fresh-laundry',
+    apiKey: 'wp_2hmoc70526zqpwdqc3keo',
+    // SaaS platform URLs - HARDCODED for development
+    saasUrl: 'http://localhost:3000',
+    siteUrl: 'http://localhost:3001',
     // Branding (will be fetched from API)
     name: 'Clean & Fresh Laundry',
     logo: null,
     primaryColor: '#3B82F6'
 };
+// Debug: Log final config
+console.log('⚙️ Laundry Config Loaded:', {
+    slug: laundryConfig.slug,
+    apiKey: laundryConfig.apiKey.substring(0, 10) + '...',
+    saasUrl: laundryConfig.saasUrl,
+    siteUrl: laundryConfig.siteUrl
+});
 }),
 "[project]/lib/saas-api.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -35,7 +47,10 @@ const laundryConfig = {
 /**
  * API Client for communicating with the SaaS platform
  * All requests include the API key for authentication
- */ __turbopack_context__.s([
+ * 
+ * VERSION: 2.0.0 - Updated with fallback URLs and extensive debugging
+ */ // Force console log to verify this file is loaded
+__turbopack_context__.s([
     "createOrder",
     ()=>createOrder,
     "fetchLaundryInfo",
@@ -46,36 +61,42 @@ const laundryConfig = {
     ()=>getCheckoutUrl
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/config.ts [app-ssr] (ecmascript)");
+console.log('📦 saas-api.ts loaded - VERSION 2.0.0');
 ;
-// Helper function to build full URL
+// Helper function to build full URL - SIMPLIFIED
 const getFullUrl = (path)=>{
-    // If saasUrl is set, use it as base
-    if (__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl) {
-        return `${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl}${path}`;
-    }
-    // For server-side calls without saasUrl, construct full URL
-    // This works in development when the API routes are in the same Next.js app
-    if ("TURBOPACK compile-time truthy", 1) {
-        const protocol = ("TURBOPACK compile-time falsy", 0) ? "TURBOPACK unreachable" : 'http';
-        const host = process.env.VERCEL_URL || `localhost:${process.env.PORT || 3000}`;
-        return `${protocol}://${host}${path}`;
-    }
-    //TURBOPACK unreachable
-    ;
+    // Always use the SaaS URL from config (hardcoded to localhost:3000)
+    const fullUrl = `${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl}${path}`;
+    console.log('🔗 API URL:', fullUrl);
+    return fullUrl;
 };
 const fetchLaundryInfo = async ()=>{
+    console.log('🏢 fetchLaundryInfo - Starting...');
+    console.log('🏢 laundryConfig.slug:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].slug);
+    console.log('🏢 laundryConfig.apiKey:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey?.substring(0, 10) + '...');
+    console.log('🏢 laundryConfig.saasUrl:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl);
     const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/info`);
-    const response = await fetch(url, {
-        headers: {
-            'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
-            'Content-Type': 'application/json'
-        },
-        cache: 'no-store'
-    });
-    if (!response.ok) {
-        throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
+    console.log('🏢 Final URL to fetch:', url);
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
+                'Content-Type': 'application/json'
+            },
+            cache: 'no-store'
+        });
+        console.log('🏢 Response status:', response.status);
+        console.log('🏢 Response ok:', response.ok);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
+        }
+        const data = await response.json();
+        console.log('🏢 Successfully fetched laundry info:', data);
+        return data;
+    } catch (error) {
+        console.error('❌ fetchLaundryInfo error:', error);
+        throw error;
     }
-    return response.json();
 };
 const fetchProducts = async ()=>{
     const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/products`);

@@ -1,158 +1,95 @@
-[00:00:01.581] Server  LOG      ✓ Ready in 1085ms
-[00:00:05.967] Server  ERROR    ⨯ ./app/globals.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: /Users/macbook/Documents/pressingrabat/app/globals.css:1:1: `@theme` blocks must only contain custom properties or `@keyframes`.
-
-  @theme {
->   @media (prefers-color-scheme: dark) {
->     --color-background: #0a0a0a;
->     --color-foreground: #ededed;
->   }
-  }
-  
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (/Users/macbook/Documents/pressingrabat/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/globals.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-
-
-[00:00:07.565] Browser ERROR   uncaughtError: Error: ./app/globals.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: /Users/macbook/Documents/pressingrabat/app/globals.css:1:1: `@theme` blocks must only contain custom properties or `@keyframes`.
-
-  @theme {
->   @media (prefers-color-scheme: dark) {
->     --color-background: #0a0a0a;
->     --color-foreground: #ededed;
->   }
-  }
-  
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (/Users/macbook/Documents/pressingrabat/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/globals.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-
-
-[00:00:09.191] Browser ERROR   ./app/globals.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: /Users/macbook/Documents/pressingrabat/app/globals.css:1:1: `@theme` blocks must only contain custom properties or `@keyframes`.
-
-  @theme {
->   @media (prefers-color-scheme: dark) {
->     --color-background: #0a0a0a;
->     --color-foreground: #ededed;
->   }
-  }
-  
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (/Users/macbook/Documents/pressingrabat/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/globals.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:00:09.191] Browser ERROR   ./app/globals.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: /Users/macbook/Documents/pressingrabat/app/globals.css:1:1: `@theme` blocks must only contain custom properties or `@keyframes`.
-
-  @theme {
->   @media (prefers-color-scheme: dark) {
->     --color-background: #0a0a0a;
->     --color-foreground: #ededed;
->   }
-  }
-  
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (/Users/macbook/Documents/pressingrabat/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/globals.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:00:22.191] Browser ERROR   ./app/globals.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: /Users/macbook/Documents/pressingrabat/app/globals.css:1:1: `@theme` blocks must only contain custom properties or `@keyframes`.
-
-  @theme {
->   @media (prefers-color-scheme: dark) {
->     --color-background: #0a0a0a;
->     --color-foreground: #ededed;
->   }
-  }
-  
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (/Users/macbook/Documents/pressingrabat/node_modules/@tailwindcss/postcss/dist/index.js:10:6912)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/globals.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:00:38.088] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:20:35.937] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:20:36.076] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
-      <AppDevOverlayErrorBoundary globalError={[...]}>
-        <ReplaySsrOnlyErrors>
-        <DevRootHTTPAccessFallbackBoundary>
-          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/order-suc..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
-              <RedirectBoundary>
-                <RedirectErrorBoundary router={{...}}>
-                  <Head>
-                  <__next_root_layout_boundary__>
-                    <SegmentViewNode type="layout" pagePath="layout.tsx">
-                      <SegmentTrieNode>
-                      <link>
-                      <script>
-                      <RootLayout>
-                        <html lang="en">
-                          <body
-                            className="antialiased"
--                           cz-shortcut-listen="true"
-                          >
-                  ...
-
-[01:17:50.894] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:24:55.031] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:25:36.388] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:34:37.361] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:37:58.064] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:40:18.733] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.384] Server  LOG      ✓ Ready in 889ms
+[00:00:05.743] Server  LOG     🔧 Environment Variables Check: {}
+[00:00:05.744] Server  LOG     ⚙️ Laundry Config Loaded: {}
+[00:00:05.744] Server  LOG     📦 saas-api.ts loaded - VERSION 2.0.0
+[00:00:06.021] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.745] Browser LOG     🔧 Environment Variables Check: {"NEXT_PUBLIC_LAUNDRY_API_KEY":"wp_2hmoc70...","NEXT_PUBLIC_LAUNDRY_SLUG":"clean-fresh-laundry","NEXT_PUBLIC_SAAS_URL":""}
+[00:00:06.745] Browser LOG     ⚙️ Laundry Config Loaded: {"apiKey":"wp_2hmoc70...","saasUrl":"http://localhost:3000","siteUrl":"http://localhost:3001","slug":"clean-fresh-laundry"}
+[00:00:06.745] Browser LOG     📦 saas-api.ts loaded - VERSION 2.0.0
+[00:00:06.745] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:00:06.745] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:00:06.745] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:00:06.745] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:00:06.745] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:06.745] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:07.749] Browser LOG     🏢 Response status: 200
+[00:00:07.749] Browser LOG     🏢 Response ok: true
+[00:00:07.749] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:00:10.129] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/products
+[00:00:10.129] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:00:10.129] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:00:10.129] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:00:10.129] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:00:10.129] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:10.129] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:10.129] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/products
+[00:00:10.129] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:00:10.129] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:00:10.130] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:00:10.130] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:00:10.130] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:10.130] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:10.907] Browser LOG     🏢 Response status: 200
+[00:00:10.907] Browser LOG     🏢 Response ok: true
+[00:00:10.907] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:00:10.907] Browser LOG     🏢 Response status: 200
+[00:00:10.907] Browser LOG     🏢 Response ok: true
+[00:00:10.907] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:00:12.349] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/1.webp" "received" null
+[00:00:14.046] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:00:14.046] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:00:14.046] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:00:14.046] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:00:14.046] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:14.046] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:14.046] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:00:14.046] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:00:14.046] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:00:14.046] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:00:14.046] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:14.046] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:14.185] Browser LOG     🏢 Response status: 200
+[00:00:14.185] Browser LOG     🏢 Response ok: true
+[00:00:14.185] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:00:14.185] Browser LOG     🏢 Response status: 200
+[00:00:14.185] Browser LOG     🏢 Response ok: true
+[00:00:14.185] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:00:22.650] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/products
+[00:00:22.650] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:00:22.650] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:00:22.650] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:00:22.650] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:00:22.650] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:22.650] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:22.650] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/products
+[00:00:22.650] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:00:22.650] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:00:22.650] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:00:22.650] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:00:22.650] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:22.650] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:22.824] Browser LOG     🏢 Response status: 200
+[00:00:22.824] Browser LOG     🏢 Response ok: true
+[00:00:22.824] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:00:22.824] Browser LOG     🏢 Response status: 200
+[00:00:22.824] Browser LOG     🏢 Response ok: true
+[00:00:22.824] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:00:22.828] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/1.webp" "received" null
+[00:00:28.853] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:00:28.853] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:00:28.853] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:00:28.853] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:00:28.853] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:28.853] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:28.853] Browser LOG     🏢 fetchLaundryInfo - Starting...
+[00:00:28.853] Browser LOG     🏢 laundryConfig.slug: clean-fresh-laundry
+[00:00:28.853] Browser LOG     🏢 laundryConfig.apiKey: wp_2hmoc70...
+[00:00:28.853] Browser LOG     🏢 laundryConfig.saasUrl: http://localhost:3000
+[00:00:28.853] Browser LOG     🔗 API URL: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:28.853] Browser LOG     🏢 Final URL to fetch: http://localhost:3000/api/public/laundry/clean-fresh-laundry/info
+[00:00:29.032] Browser LOG     🏢 Response status: 200
+[00:00:29.032] Browser LOG     🏢 Response ok: true
+[00:00:29.032] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}
+[00:00:29.032] Browser LOG     🏢 Response status: 200
+[00:00:29.032] Browser LOG     🏢 Response ok: true
+[00:00:29.032] Browser LOG     🏢 Successfully fetched laundry info: {"address":"123 Rue Hassan II, Casablanca","id":"cmgr4k06c0001w22pbkmzcsql","logo":null,"name":"Clean & Fresh Laundry","phoneNumber":"+212600100001","primaryColor":null,"slaHours":48,"websiteUrl":"https://clean-fresh-laundry.laundry-app.com"}

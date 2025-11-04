@@ -1,9 +1,6 @@
 {
-  "/api/public/laundry/[slug]/info/route": "app/api/public/laundry/[slug]/info/route.js",
-  "/api/public/laundry/[slug]/products/route": "app/api/public/laundry/[slug]/products/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/cart/page": "app/cart/page.js",
-  "/checkout/page": "app/checkout/page.js",
-  "/order-success/page": "app/order-success/page.js",
   "/page": "app/page.js",
   "/services/page": "app/services/page.js"
 }

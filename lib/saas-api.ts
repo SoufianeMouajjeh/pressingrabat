@@ -7,10 +7,18 @@ import { laundryConfig, LaundryInfo, Product, CartItem, CustomerInfo } from './c
 
 // Helper function to build full URL
 const getFullUrl = (path: string): string => {
+  console.log('🔍 DEBUG - Building URL:', {
+    path,
+    saasUrl: laundryConfig.saasUrl,
+    hasWindow: typeof window !== 'undefined',
+  });
+
   // If saasUrl is set, use it as base (remove trailing slash if present)
   if (laundryConfig.saasUrl) {
     const baseUrl = laundryConfig.saasUrl.replace(/\/$/, ''); // Remove trailing slash
-    return `${baseUrl}${path}`;
+    const fullUrl = `${baseUrl}${path}`;
+    console.log('✅ Using saasUrl:', fullUrl);
+    return fullUrl;
   }
   
   // For server-side calls without saasUrl, construct full URL
@@ -18,10 +26,13 @@ const getFullUrl = (path: string): string => {
   if (typeof window === 'undefined') {
     const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
     const host = process.env.VERCEL_URL || `localhost:${process.env.PORT || 3000}`;
-    return `${protocol}://${host}${path}`;
+    const fullUrl = `${protocol}://${host}${path}`;
+    console.log('🖥️ Server-side URL:', fullUrl);
+    return fullUrl;
   }
   
   // For client-side calls, use relative path (works with same-origin API routes)
+  console.log('🌐 Client-side relative path:', path);
   return path;
 };
 
@@ -30,20 +41,32 @@ const getFullUrl = (path: string): string => {
  */
 export const fetchLaundryInfo = async (): Promise<LaundryInfo> => {
   const url = getFullUrl(`/api/public/laundry/${laundryConfig.slug}/info`);
+  console.log('🏢 Fetching laundry info from:', url);
   
-  const response = await fetch(url, {
-    headers: {
-      'x-api-key': laundryConfig.apiKey,
-      'Content-Type': 'application/json',
-    },
-    cache: 'no-store',
-  });
-  
-  if (!response.ok) {
-    throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
+  try {
+    const response = await fetch(url, {
+      headers: {
+        'x-api-key': laundryConfig.apiKey,
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+    
+    console.log('📡 Response status:', response.status, response.statusText);
+    
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => 'Unable to read error');
+      console.error('❌ API Error:', { status: response.status, error: errorText });
+      throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
+    }
+    
+    const data = await response.json();
+    console.log('✅ Successfully fetched laundry info');
+    return data;
+  } catch (error) {
+    console.error('❌ Fetch error:', error);
+    throw error;
   }
-  
-  return response.json();
 };
 
 /**
@@ -51,19 +74,32 @@ export const fetchLaundryInfo = async (): Promise<LaundryInfo> => {
  */
 export const fetchProducts = async (): Promise<Product[]> => {
   const url = getFullUrl(`/api/public/laundry/${laundryConfig.slug}/products`);
-  const response = await fetch(url, {
-    headers: {
-      'x-api-key': laundryConfig.apiKey,
-      'Content-Type': 'application/json',
-    },
-    cache: 'no-store',
-  });
+  console.log('📦 Fetching products from:', url);
   
-  if (!response.ok) {
-    throw new Error(`Failed to fetch products: ${response.statusText}`);
+  try {
+    const response = await fetch(url, {
+      headers: {
+        'x-api-key': laundryConfig.apiKey,
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+    
+    console.log('📡 Products response status:', response.status, response.statusText);
+    
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => 'Unable to read error');
+      console.error('❌ Products API Error:', { status: response.status, error: errorText });
+      throw new Error(`Failed to fetch products: ${response.statusText}`);
+    }
+    
+    const data = await response.json();
+    console.log('✅ Successfully fetched', data.length, 'products');
+    return data;
+  } catch (error) {
+    console.error('❌ Fetch products error:', error);
+    throw error;
   }
-  
-  return response.json();
 };
 
 /**

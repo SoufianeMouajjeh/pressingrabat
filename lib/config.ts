@@ -1,12 +1,4 @@
 /**
- * Configuration f  primaryColor: '#3B82F6',
-}
-
-export type LaundryInfo = {resh Laundry Website
- * Connected to the main SaaS platform
- */
-
-/**
  * Configuration for Clean & Fresh Laundry Website
  * Connected to the main SaaS platform
  */
@@ -25,6 +17,14 @@ export const laundryConfig = {
   logo: null as string | null,
   primaryColor: '#3B82F6',
 }
+
+// Debug logging
+console.log('⚙️ Config loaded:', {
+  slug: laundryConfig.slug,
+  hasApiKey: !!laundryConfig.apiKey,
+  saasUrl: laundryConfig.saasUrl || '(empty - using local routes)',
+  siteUrl: laundryConfig.siteUrl,
+});
 
 export type LaundryInfo = {
   id: string;

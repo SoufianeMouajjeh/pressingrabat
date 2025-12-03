@@ -7,6 +7,19 @@ import { fetchProducts, fetchLaundryInfo } from '@/lib/saas-api';
 import { useCartStore } from '@/lib/cart-store';
 import type { Product, LaundryInfo } from '@/lib/config';
 
+// Known invalid image domains
+const INVALID_IMAGE_DOMAINS = ['laundry-app.com', 'example.com'];
+
+const isValidImageUrl = (url: string | null | undefined): boolean => {
+  if (!url) return false;
+  try {
+    const urlObj = new URL(url);
+    return !INVALID_IMAGE_DOMAINS.some(domain => urlObj.hostname.endsWith(domain));
+  } catch {
+    return true; // Relative URLs are fine
+  }
+};
+
 export default function ServicesPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [laundryInfo, setLaundryInfo] = useState<LaundryInfo | null>(null);
@@ -180,10 +193,10 @@ export default function ServicesPage() {
             {products.map(product => (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
                 {/* Product Image */}
-                {product.image ? (
+                {isValidImageUrl(product.image) ? (
                   <div className="relative h-48 bg-gray-200">
                     <Image
-                      src={product.image}
+                      src={product.image!}
                       alt={product.name}
                       fill
                       className="object-cover"

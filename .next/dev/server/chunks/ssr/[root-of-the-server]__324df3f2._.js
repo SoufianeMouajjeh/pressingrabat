@@ -27,12 +27,6 @@ module.exports = mod;
 "use strict";
 
 /**
- * Configuration f  primaryColor: '#3B82F6',
-}
-
-export type LaundryInfo = {resh Laundry Website
- * Connected to the main SaaS platform
- */ /**
  * Configuration for Clean & Fresh Laundry Website
  * Connected to the main SaaS platform
  */ __turbopack_context__.s([
@@ -44,18 +38,18 @@ const laundryConfig = {
     slug: ("TURBOPACK compile-time value", "clean-fresh-laundry") || 'clean-fresh-laundry',
     apiKey: ("TURBOPACK compile-time value", "wp_2hmoc70526zqpwdqc3keo") || '',
     // SaaS platform URLs
-    saasUrl: ("TURBOPACK compile-time value", "") || '',
-    siteUrl: ("TURBOPACK compile-time value", "http://localhost:3001") || 'http://localhost:3001',
+    saasUrl: ("TURBOPACK compile-time value", "https://laundry-saas-seven.vercel.app") || '',
+    siteUrl: ("TURBOPACK compile-time value", "https://pressingrabat.vercel.app") || 'http://localhost:3001',
     // Branding (will be fetched from API)
     name: 'Clean & Fresh Laundry',
     logo: null,
     primaryColor: '#3B82F6'
 };
-// Debug: Log final config
-console.log('⚙️ Laundry Config Loaded:', {
+// Debug logging
+console.log('⚙️ Config loaded:', {
     slug: laundryConfig.slug,
-    apiKey: laundryConfig.apiKey.substring(0, 10) + '...',
-    saasUrl: laundryConfig.saasUrl,
+    hasApiKey: !!laundryConfig.apiKey,
+    saasUrl: laundryConfig.saasUrl || '(empty - using local routes)',
     siteUrl: laundryConfig.siteUrl
 });
 }),
@@ -63,29 +57,9 @@ console.log('⚙️ Laundry Config Loaded:', {
 "use strict";
 
 /**
- * API C// Helper function to build full URL
-const getFullUrl = (path: string): string => {
-  // If saasUrl is set, use it as base
-  if (laundryConfig.saasUrl) {
-    return `${laundryConfig.saasUrl}${path}`;
-  }
-  
-  // For server-side calls without saasUrl, construct full URL
-  // This works in development when the API routes are in the same Next.js app
-  if (typeof window === 'undefined') {
-    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-    const host = process.env.VERCEL_URL || `localhost:${process.env.PORT || 3000}`;
-    return `${protocol}://${host}${path}`;
-  }
-  
-  // For client-side calls, use relative path (works with same-origin API routes)
-  return path;
-};or communicating with the SaaS platform
+ * API Client for communicating with the SaaS platform
  * All requests include the API key for authentication
- * 
- * VERSION: 2.0.0 - Updated with fallback URLs and extensive debugging
- */ // Force console log to verify this file is loaded
-__turbopack_context__.s([
+ */ __turbopack_context__.s([
     "createOrder",
     ()=>createOrder,
     "fetchLaundryInfo",
@@ -96,42 +70,139 @@ __turbopack_context__.s([
     ()=>getCheckoutUrl
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/config.ts [app-ssr] (ecmascript)");
-console.log('📦 saas-api.ts loaded - VERSION 2.0.0');
 ;
-// Helper function to build full URL - SIMPLIFIED
+// Helper function to build full URL
 const getFullUrl = (path)=>{
-    // Always use the SaaS URL from config (hardcoded to localhost:3000)
-    const fullUrl = `${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl}${path}`;
-    console.log('🔗 API URL:', fullUrl);
-    return fullUrl;
+    console.log('🔍 DEBUG - Building URL:', {
+        path,
+        saasUrl: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl,
+        hasWindow: ("TURBOPACK compile-time value", "undefined") !== 'undefined'
+    });
+    // If saasUrl is set, use it as base (remove trailing slash if present)
+    if (__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl) {
+        const baseUrl = __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl.replace(/\/$/, ''); // Remove trailing slash
+        const fullUrl = `${baseUrl}${path}`;
+        console.log('✅ Using saasUrl:', fullUrl);
+        return fullUrl;
+    }
+    // For server-side calls without saasUrl, construct full URL
+    // This works in development when the API routes are in the same Next.js app
+    if ("TURBOPACK compile-time truthy", 1) {
+        const protocol = ("TURBOPACK compile-time falsy", 0) ? "TURBOPACK unreachable" : 'http';
+        const host = process.env.VERCEL_URL || `localhost:${process.env.PORT || 3000}`;
+        const fullUrl = `${protocol}://${host}${path}`;
+        console.log('🖥️ Server-side URL:', fullUrl);
+        return fullUrl;
+    }
+    //TURBOPACK unreachable
+    ;
 };
 const fetchLaundryInfo = async ()=>{
     const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/info`);
-    const response = await fetch(url, {
-        headers: {
-            'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
-            'Content-Type': 'application/json'
-        },
-        cache: 'no-store'
-    });
-    if (!response.ok) {
-        throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
+    console.log('🏢 Fetching laundry info from:', url);
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
+                'Content-Type': 'application/json'
+            },
+            cache: 'no-store'
+        });
+        console.log('📡 Response status:', response.status, response.statusText);
+        if (!response.ok) {
+            const errorText = await response.text().catch(()=>'Unable to read error');
+            console.error('❌ API Error:', {
+                status: response.status,
+                error: errorText
+            });
+            throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
+        }
+        const data = await response.json();
+        console.log('✅ Successfully fetched laundry info');
+        return data;
+    } catch (error) {
+        console.error('❌ Fetch error:', error);
+        throw error;
     }
-    return response.json();
+};
+/**
+ * Map service name from SaaS API to expected service type
+ */ const mapServiceNameToType = (serviceName)=>{
+    const lowerName = serviceName.toLowerCase();
+    if (lowerName.includes('repassage') || lowerName.includes('iron')) {
+        return 'REPASSAGE';
+    }
+    if (lowerName.includes('sec') || lowerName.includes('dry')) {
+        return 'NETTOYAGE_A_SEC';
+    }
+    // Default to NETTOYAGE for washing, lavage, cleaning, etc.
+    return 'NETTOYAGE';
 };
 const fetchProducts = async ()=>{
     const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/products`);
-    const response = await fetch(url, {
-        headers: {
-            'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
-            'Content-Type': 'application/json'
-        },
-        cache: 'no-store'
-    });
-    if (!response.ok) {
-        throw new Error(`Failed to fetch products: ${response.statusText}`);
+    console.log('📦 Fetching products from:', url);
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
+                'Content-Type': 'application/json'
+            },
+            cache: 'no-store'
+        });
+        console.log('📡 Products response status:', response.status, response.statusText);
+        if (!response.ok) {
+            const errorText = await response.text().catch(()=>'Unable to read error');
+            console.error('❌ Products API Error:', {
+                status: response.status,
+                error: errorText
+            });
+            throw new Error(`Failed to fetch products: ${response.statusText}`);
+        }
+        const data = await response.json();
+        console.log('📦 Raw API response:', JSON.stringify(data).substring(0, 500));
+        // Handle both old format (array) and new format (object with products array)
+        let rawProducts;
+        if (Array.isArray(data)) {
+            // Old format: direct array of products
+            rawProducts = data;
+        } else if (data.products && Array.isArray(data.products)) {
+            // New format: { laundry, products, totalProducts, totalServices }
+            rawProducts = data.products;
+        } else {
+            console.error('❌ Unexpected API response format:', data);
+            return [];
+        }
+        // Transform products to expected format
+        const products = rawProducts.map((item)=>{
+            // Transform services to expected format
+            const services = (item.services || []).map((svc)=>({
+                    id: svc.id,
+                    productId: item.id,
+                    service: svc.service || mapServiceNameToType(svc.name || ''),
+                    serviceType: svc.service || mapServiceNameToType(svc.name || ''),
+                    name: svc.name || svc.service,
+                    price: svc.price || item.price || 0
+                }));
+            // Get the first service price as default product price
+            const defaultPrice = services.length > 0 ? services[0].price : item.price || 0;
+            return {
+                id: item.id,
+                name: item.name,
+                description: item.description || null,
+                category: item.category || 'GENERAL',
+                image: item.image || item.imageUrl || null,
+                imageUrl: item.image || item.imageUrl || null,
+                status: item.status || 'ACTIVE',
+                price: defaultPrice,
+                services
+            };
+        });
+        console.log('✅ Successfully transformed', products.length, 'products');
+        return products;
+    } catch (error) {
+        console.error('❌ Fetch products error:', error);
+        throw error;
     }
-    return response.json();
 };
 const createOrder = async (cartItems, customerInfo, specialInstructions, pickupScheduledAt)=>{
     try {

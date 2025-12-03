@@ -7,6 +7,31 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { CartItem } from './config';
 
+// Known invalid image domains that should be filtered out
+const INVALID_IMAGE_DOMAINS = [
+  'laundry-app.com',
+  'example.com',
+];
+
+/**
+ * Sanitize image URL - returns undefined for invalid domains
+ */
+const sanitizeImageUrl = (url: string | null | undefined): string | undefined => {
+  if (!url) return undefined;
+  
+  try {
+    const urlObj = new URL(url);
+    for (const invalidDomain of INVALID_IMAGE_DOMAINS) {
+      if (urlObj.hostname.endsWith(invalidDomain)) {
+        return undefined;
+      }
+    }
+    return url;
+  } catch {
+    return url;
+  }
+};
+
 interface CartStore {
   items: CartItem[];
   addItem: (item: CartItem) => void;
@@ -23,21 +48,28 @@ export const useCartStore = create<CartStore>()(
       items: [],
       
       addItem: (newItem) => {
+        // Sanitize image URLs before storing
+        const sanitizedItem = {
+          ...newItem,
+          image: sanitizeImageUrl(newItem.image),
+          imageUrl: sanitizeImageUrl(newItem.imageUrl),
+        };
+        
         set((state) => {
           // Check if item already exists
           const existingIndex = state.items.findIndex(
-            (item) => item.productId === newItem.productId && item.serviceType === newItem.serviceType
+            (item) => item.productId === sanitizedItem.productId && item.serviceType === sanitizedItem.serviceType
           );
           
           if (existingIndex >= 0) {
             // Update quantity
             const updatedItems = [...state.items];
-            updatedItems[existingIndex].quantity += newItem.quantity;
+            updatedItems[existingIndex].quantity += sanitizedItem.quantity;
             return { items: updatedItems };
           }
           
           // Add new item
-          return { items: [...state.items, newItem] };
+          return { items: [...state.items, sanitizedItem] };
         });
       },
       
@@ -84,6 +116,18 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: 'clean-fresh-cart', // localStorage key
+      // Migrate existing items to sanitize image URLs
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          // Sanitize image URLs in existing cart items
+          const sanitizedItems = state.items.map(item => ({
+            ...item,
+            image: sanitizeImageUrl(item.image),
+            imageUrl: sanitizeImageUrl(item.imageUrl),
+          }));
+          state.items = sanitizedItems;
+        }
+      },
     }
   )
 );

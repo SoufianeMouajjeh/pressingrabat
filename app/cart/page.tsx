@@ -8,6 +8,19 @@ import { fetchLaundryInfo } from '@/lib/saas-api';
 import { useCartStore } from '@/lib/cart-store';
 import type { LaundryInfo } from '@/lib/config';
 
+// Known invalid image domains
+const INVALID_IMAGE_DOMAINS = ['laundry-app.com', 'example.com'];
+
+const isValidImageUrl = (url: string | null | undefined): boolean => {
+  if (!url) return false;
+  try {
+    const urlObj = new URL(url);
+    return !INVALID_IMAGE_DOMAINS.some(domain => urlObj.hostname.endsWith(domain));
+  } catch {
+    return true; // Relative URLs are fine
+  }
+};
+
 export default function CartPage() {
   const [laundryInfo, setLaundryInfo] = useState<LaundryInfo | null>(null);
   const [loading, setLoading] = useState(true);
@@ -140,10 +153,10 @@ export default function CartPage() {
                   <div className="flex items-start space-x-4">
                     {/* Product Image */}
                     <div className="flex-shrink-0">
-                      {item.image || item.imageUrl ? (
+                      {isValidImageUrl(item.image) || isValidImageUrl(item.imageUrl) ? (
                         <div className="relative w-24 h-24 bg-gray-200 rounded-lg overflow-hidden">
                           <Image
-                            src={item.image || item.imageUrl || ''}
+                            src={(isValidImageUrl(item.image) ? item.image : item.imageUrl) || ''}
                             alt={item.productName}
                             fill
                             className="object-cover"

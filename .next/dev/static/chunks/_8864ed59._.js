@@ -5,34 +5,28 @@
 /**
  * Configuration for Clean & Fresh Laundry Website
  * Connected to the main SaaS platform
- */ // Debug: Log environment variables
-__turbopack_context__.s([
+ */ __turbopack_context__.s([
     "laundryConfig",
     ()=>laundryConfig
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
-console.log('🔧 Environment Variables Check:', {
-    NEXT_PUBLIC_SAAS_URL: ("TURBOPACK compile-time value", ""),
-    NEXT_PUBLIC_LAUNDRY_SLUG: ("TURBOPACK compile-time value", "clean-fresh-laundry"),
-    NEXT_PUBLIC_LAUNDRY_API_KEY: ("TURBOPACK compile-time value", "wp_2hmoc70526zqpwdqc3keo")?.substring(0, 10) + '...'
-});
 const laundryConfig = {
     // Laundry identification
-    slug: 'clean-fresh-laundry',
-    apiKey: 'wp_2hmoc70526zqpwdqc3keo',
-    // SaaS platform URLs - HARDCODED for development
-    saasUrl: 'http://localhost:3000',
-    siteUrl: 'http://localhost:3001',
+    slug: ("TURBOPACK compile-time value", "clean-fresh-laundry") || 'clean-fresh-laundry',
+    apiKey: ("TURBOPACK compile-time value", "wp_2hmoc70526zqpwdqc3keo") || '',
+    // SaaS platform URLs
+    saasUrl: ("TURBOPACK compile-time value", "https://laundry-saas-seven.vercel.app") || '',
+    siteUrl: ("TURBOPACK compile-time value", "https://pressingrabat.vercel.app") || 'http://localhost:3001',
     // Branding (will be fetched from API)
     name: 'Clean & Fresh Laundry',
     logo: null,
     primaryColor: '#3B82F6'
 };
-// Debug: Log final config
-console.log('⚙️ Laundry Config Loaded:', {
+// Debug logging
+console.log('⚙️ Config loaded:', {
     slug: laundryConfig.slug,
-    apiKey: laundryConfig.apiKey.substring(0, 10) + '...',
-    saasUrl: laundryConfig.saasUrl,
+    hasApiKey: !!laundryConfig.apiKey,
+    saasUrl: laundryConfig.saasUrl || '(empty - using local routes)',
     siteUrl: laundryConfig.siteUrl
 });
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
@@ -45,10 +39,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 /**
  * API Client for communicating with the SaaS platform
  * All requests include the API key for authentication
- * 
- * VERSION: 2.0.0 - Updated with fallback URLs and extensive debugging
- */ // Force console log to verify this file is loaded
-__turbopack_context__.s([
+ */ __turbopack_context__.s([
     "createOrder",
     ()=>createOrder,
     "fetchLaundryInfo",
@@ -59,22 +50,32 @@ __turbopack_context__.s([
     ()=>getCheckoutUrl
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/config.ts [app-client] (ecmascript)");
-console.log('📦 saas-api.ts loaded - VERSION 2.0.0');
 ;
-// Helper function to build full URL - SIMPLIFIED
+// Helper function to build full URL
 const getFullUrl = (path)=>{
-    // Always use the SaaS URL from config (hardcoded to localhost:3000)
-    const fullUrl = `${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl}${path}`;
-    console.log('🔗 API URL:', fullUrl);
-    return fullUrl;
+    console.log('🔍 DEBUG - Building URL:', {
+        path,
+        saasUrl: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl,
+        hasWindow: ("TURBOPACK compile-time value", "object") !== 'undefined'
+    });
+    // If saasUrl is set, use it as base (remove trailing slash if present)
+    if (__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl) {
+        const baseUrl = __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl.replace(/\/$/, ''); // Remove trailing slash
+        const fullUrl = `${baseUrl}${path}`;
+        console.log('✅ Using saasUrl:', fullUrl);
+        return fullUrl;
+    }
+    // For server-side calls without saasUrl, construct full URL
+    // This works in development when the API routes are in the same Next.js app
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    // For client-side calls, use relative path (works with same-origin API routes)
+    console.log('🌐 Client-side relative path:', path);
+    return path;
 };
 const fetchLaundryInfo = async ()=>{
-    console.log('🏢 fetchLaundryInfo - Starting...');
-    console.log('🏢 laundryConfig.slug:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug);
-    console.log('🏢 laundryConfig.apiKey:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey?.substring(0, 10) + '...');
-    console.log('🏢 laundryConfig.saasUrl:', __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].saasUrl);
     const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/info`);
-    console.log('🏢 Final URL to fetch:', url);
+    console.log('🏢 Fetching laundry info from:', url);
     try {
         const response = await fetch(url, {
             headers: {
@@ -83,32 +84,101 @@ const fetchLaundryInfo = async ()=>{
             },
             cache: 'no-store'
         });
-        console.log('🏢 Response status:', response.status);
-        console.log('🏢 Response ok:', response.ok);
+        console.log('📡 Response status:', response.status, response.statusText);
         if (!response.ok) {
+            const errorText = await response.text().catch(()=>'Unable to read error');
+            console.error('❌ API Error:', {
+                status: response.status,
+                error: errorText
+            });
             throw new Error(`Failed to fetch laundry info: ${response.statusText}`);
         }
         const data = await response.json();
-        console.log('🏢 Successfully fetched laundry info:', data);
+        console.log('✅ Successfully fetched laundry info');
         return data;
     } catch (error) {
-        console.error('❌ fetchLaundryInfo error:', error);
+        console.error('❌ Fetch error:', error);
         throw error;
     }
 };
+/**
+ * Map service name from SaaS API to expected service type
+ */ const mapServiceNameToType = (serviceName)=>{
+    const lowerName = serviceName.toLowerCase();
+    if (lowerName.includes('repassage') || lowerName.includes('iron')) {
+        return 'REPASSAGE';
+    }
+    if (lowerName.includes('sec') || lowerName.includes('dry')) {
+        return 'NETTOYAGE_A_SEC';
+    }
+    // Default to NETTOYAGE for washing, lavage, cleaning, etc.
+    return 'NETTOYAGE';
+};
 const fetchProducts = async ()=>{
     const url = getFullUrl(`/api/public/laundry/${__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].slug}/products`);
-    const response = await fetch(url, {
-        headers: {
-            'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
-            'Content-Type': 'application/json'
-        },
-        cache: 'no-store'
-    });
-    if (!response.ok) {
-        throw new Error(`Failed to fetch products: ${response.statusText}`);
+    console.log('📦 Fetching products from:', url);
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'x-api-key': __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["laundryConfig"].apiKey,
+                'Content-Type': 'application/json'
+            },
+            cache: 'no-store'
+        });
+        console.log('📡 Products response status:', response.status, response.statusText);
+        if (!response.ok) {
+            const errorText = await response.text().catch(()=>'Unable to read error');
+            console.error('❌ Products API Error:', {
+                status: response.status,
+                error: errorText
+            });
+            throw new Error(`Failed to fetch products: ${response.statusText}`);
+        }
+        const data = await response.json();
+        console.log('📦 Raw API response:', JSON.stringify(data).substring(0, 500));
+        // Handle both old format (array) and new format (object with products array)
+        let rawProducts;
+        if (Array.isArray(data)) {
+            // Old format: direct array of products
+            rawProducts = data;
+        } else if (data.products && Array.isArray(data.products)) {
+            // New format: { laundry, products, totalProducts, totalServices }
+            rawProducts = data.products;
+        } else {
+            console.error('❌ Unexpected API response format:', data);
+            return [];
+        }
+        // Transform products to expected format
+        const products = rawProducts.map((item)=>{
+            // Transform services to expected format
+            const services = (item.services || []).map((svc)=>({
+                    id: svc.id,
+                    productId: item.id,
+                    service: svc.service || mapServiceNameToType(svc.name || ''),
+                    serviceType: svc.service || mapServiceNameToType(svc.name || ''),
+                    name: svc.name || svc.service,
+                    price: svc.price || item.price || 0
+                }));
+            // Get the first service price as default product price
+            const defaultPrice = services.length > 0 ? services[0].price : item.price || 0;
+            return {
+                id: item.id,
+                name: item.name,
+                description: item.description || null,
+                category: item.category || 'GENERAL',
+                image: item.image || item.imageUrl || null,
+                imageUrl: item.image || item.imageUrl || null,
+                status: item.status || 'ACTIVE',
+                price: defaultPrice,
+                services
+            };
+        });
+        console.log('✅ Successfully transformed', products.length, 'products');
+        return products;
+    } catch (error) {
+        console.error('❌ Fetch products error:', error);
+        throw error;
     }
-    return response.json();
 };
 const createOrder = async (cartItems, customerInfo, specialInstructions, pickupScheduledAt)=>{
     try {
@@ -295,18 +365,24 @@ function ServicesPage() {
             loadData();
         }
     }["ServicesPage.useEffect"], []);
-    const getServiceName = (serviceType)=>{
+    // Get display name for a service - prefer actual name over type
+    const getServiceDisplayName = (service)=>{
+        // If service has a name field, use it
+        if (service.name) {
+            return service.name;
+        }
+        // Fallback to mapping the service type
         const names = {
-            'NETTOYAGE': 'Washing',
-            'REPASSAGE': 'Ironing',
-            'NETTOYAGE_A_SEC': 'Dry Cleaning'
+            'NETTOYAGE': 'Lavage',
+            'REPASSAGE': 'Repassage',
+            'NETTOYAGE_A_SEC': 'Nettoyage à sec'
         };
-        return names[serviceType] || serviceType;
+        return names[service.service] || service.service || 'Service';
     };
     const handleAddToCart = (product)=>{
         const serviceId = selectedServices[product.id];
         const service = product.services?.find((s)=>s.id === serviceId);
-        if (!service || !service.service) {
+        if (!service) {
             alert('Please select a service');
             return;
         }
@@ -314,8 +390,8 @@ function ServicesPage() {
             productId: product.id,
             productName: product.name,
             serviceId: service.id,
-            serviceName: getServiceName(service.service),
-            serviceType: service.service,
+            serviceName: getServiceDisplayName(service),
+            serviceType: service.service || 'NETTOYAGE',
             price: service.price || product.price,
             quantity: 1,
             imageUrl: product.image || undefined
@@ -345,26 +421,26 @@ function ServicesPage() {
                         className: "animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto"
                     }, void 0, false, {
                         fileName: "[project]/app/services/page.tsx",
-                        lineNumber: 93,
+                        lineNumber: 99,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "mt-4 text-gray-600",
-                        children: "Loading products..."
+                        children: "Chargement des services..."
                     }, void 0, false, {
                         fileName: "[project]/app/services/page.tsx",
-                        lineNumber: 94,
+                        lineNumber: 100,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/services/page.tsx",
-                lineNumber: 92,
+                lineNumber: 98,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/services/page.tsx",
-            lineNumber: 91,
+            lineNumber: 97,
             columnNumber: 7
         }, this);
     }
@@ -379,27 +455,27 @@ function ServicesPage() {
                         children: error
                     }, void 0, false, {
                         fileName: "[project]/app/services/page.tsx",
-                        lineNumber: 104,
+                        lineNumber: 110,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                         href: "/",
                         className: "mt-4 inline-block text-blue-600 hover:underline",
-                        children: "Return to Home"
+                        children: "Retour à l'accueil"
                     }, void 0, false, {
                         fileName: "[project]/app/services/page.tsx",
-                        lineNumber: 105,
+                        lineNumber: 111,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/services/page.tsx",
-                lineNumber: 103,
+                lineNumber: 109,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/services/page.tsx",
-            lineNumber: 102,
+            lineNumber: 108,
             columnNumber: 7
         }, this);
     }
@@ -417,29 +493,29 @@ function ServicesPage() {
                                 href: "/",
                                 className: "flex items-center space-x-3",
                                 children: [
-                                    laundryInfo?.logo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                        src: laundryInfo.logo,
+                                    laundryInfo?.logoUrl && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                        src: laundryInfo.logoUrl,
                                         alt: laundryInfo.name,
                                         width: 40,
                                         height: 40,
                                         className: "rounded-lg"
                                     }, void 0, false, {
                                         fileName: "[project]/app/services/page.tsx",
-                                        lineNumber: 121,
+                                        lineNumber: 127,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "text-xl font-bold text-gray-900",
-                                        children: laundryInfo?.name || 'Clean & Fresh Laundry'
+                                        children: laundryInfo?.name || 'Pressing Rabat'
                                     }, void 0, false, {
                                         fileName: "[project]/app/services/page.tsx",
-                                        lineNumber: 129,
+                                        lineNumber: 135,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/services/page.tsx",
-                                lineNumber: 119,
+                                lineNumber: 125,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -448,10 +524,10 @@ function ServicesPage() {
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                         href: "/",
                                         className: "text-gray-700 hover:text-blue-600 transition",
-                                        children: "Home"
+                                        children: "Accueil"
                                     }, void 0, false, {
                                         fileName: "[project]/app/services/page.tsx",
-                                        lineNumber: 135,
+                                        lineNumber: 141,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -460,7 +536,7 @@ function ServicesPage() {
                                         children: "Services"
                                     }, void 0, false, {
                                         fileName: "[project]/app/services/page.tsx",
-                                        lineNumber: 138,
+                                        lineNumber: 144,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -479,12 +555,12 @@ function ServicesPage() {
                                                     d: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/services/page.tsx",
-                                                    lineNumber: 143,
+                                                    lineNumber: 149,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/services/page.tsx",
-                                                lineNumber: 142,
+                                                lineNumber: 148,
                                                 columnNumber: 17
                                             }, this),
                                             getTotalItems() > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -492,35 +568,35 @@ function ServicesPage() {
                                                 children: getTotalItems()
                                             }, void 0, false, {
                                                 fileName: "[project]/app/services/page.tsx",
-                                                lineNumber: 146,
+                                                lineNumber: 152,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/services/page.tsx",
-                                        lineNumber: 141,
+                                        lineNumber: 147,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/services/page.tsx",
-                                lineNumber: 134,
+                                lineNumber: 140,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/services/page.tsx",
-                        lineNumber: 118,
+                        lineNumber: 124,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/services/page.tsx",
-                    lineNumber: 117,
+                    lineNumber: 123,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/services/page.tsx",
-                lineNumber: 116,
+                lineNumber: 122,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -530,29 +606,29 @@ function ServicesPage() {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                             className: "text-4xl font-bold mb-4",
-                            children: "Our Services"
+                            children: "Nos Services"
                         }, void 0, false, {
                             fileName: "[project]/app/services/page.tsx",
-                            lineNumber: 159,
+                            lineNumber: 165,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "text-xl text-blue-100",
-                            children: "Professional laundry and dry cleaning services for all your needs"
+                            children: "Services professionnels de pressing et nettoyage à sec"
                         }, void 0, false, {
                             fileName: "[project]/app/services/page.tsx",
-                            lineNumber: 160,
+                            lineNumber: 166,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/services/page.tsx",
-                    lineNumber: 158,
+                    lineNumber: 164,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/services/page.tsx",
-                lineNumber: 157,
+                lineNumber: 163,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -562,15 +638,15 @@ function ServicesPage() {
                         className: "text-center py-12",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "text-gray-600 text-lg",
-                            children: "No products available at the moment."
+                            children: "Aucun service disponible pour le moment."
                         }, void 0, false, {
                             fileName: "[project]/app/services/page.tsx",
-                            lineNumber: 170,
+                            lineNumber: 176,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/services/page.tsx",
-                        lineNumber: 169,
+                        lineNumber: 175,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
@@ -586,12 +662,12 @@ function ServicesPage() {
                                             className: "object-cover"
                                         }, void 0, false, {
                                             fileName: "[project]/app/services/page.tsx",
-                                            lineNumber: 179,
+                                            lineNumber: 185,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/services/page.tsx",
-                                        lineNumber: 178,
+                                        lineNumber: 184,
                                         columnNumber: 19
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center",
@@ -607,17 +683,17 @@ function ServicesPage() {
                                                 d: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/services/page.tsx",
-                                                lineNumber: 189,
+                                                lineNumber: 195,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/services/page.tsx",
-                                            lineNumber: 188,
+                                            lineNumber: 194,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/services/page.tsx",
-                                        lineNumber: 187,
+                                        lineNumber: 193,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -628,7 +704,7 @@ function ServicesPage() {
                                                 children: product.name
                                             }, void 0, false, {
                                                 fileName: "[project]/app/services/page.tsx",
-                                                lineNumber: 196,
+                                                lineNumber: 202,
                                                 columnNumber: 19
                                             }, this),
                                             product.description && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -636,7 +712,7 @@ function ServicesPage() {
                                                 children: product.description
                                             }, void 0, false, {
                                                 fileName: "[project]/app/services/page.tsx",
-                                                lineNumber: 198,
+                                                lineNumber: 204,
                                                 columnNumber: 21
                                             }, this),
                                             product.services && product.services.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -644,10 +720,10 @@ function ServicesPage() {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                         className: "block text-sm font-medium text-gray-700 mb-2",
-                                                        children: "Select Service:"
+                                                        children: "Choisir un service:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/services/page.tsx",
-                                                        lineNumber: 204,
+                                                        lineNumber: 210,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -660,24 +736,25 @@ function ServicesPage() {
                                                         children: product.services.map((service)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                 value: service.id,
                                                                 children: [
-                                                                    getServiceName(service.service),
-                                                                    " - $",
-                                                                    (service.price || product.price).toFixed(2)
+                                                                    getServiceDisplayName(service),
+                                                                    " - ",
+                                                                    (service.price || product.price).toFixed(2),
+                                                                    " MAD"
                                                                 ]
                                                             }, service.id, true, {
                                                                 fileName: "[project]/app/services/page.tsx",
-                                                                lineNumber: 216,
+                                                                lineNumber: 222,
                                                                 columnNumber: 27
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/services/page.tsx",
-                                                        lineNumber: 207,
+                                                        lineNumber: 213,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/services/page.tsx",
-                                                lineNumber: 203,
+                                                lineNumber: 209,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -699,41 +776,41 @@ function ServicesPage() {
                                                                 d: "M5 13l4 4L19 7"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/services/page.tsx",
-                                                                lineNumber: 237,
+                                                                lineNumber: 243,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/services/page.tsx",
-                                                            lineNumber: 236,
+                                                            lineNumber: 242,
                                                             columnNumber: 25
                                                         }, this),
-                                                        "Added to Cart!"
+                                                        "Ajouté au panier!"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/services/page.tsx",
-                                                    lineNumber: 235,
+                                                    lineNumber: 241,
                                                     columnNumber: 23
-                                                }, this) : 'Add to Cart'
+                                                }, this) : 'Ajouter au panier'
                                             }, void 0, false, {
                                                 fileName: "[project]/app/services/page.tsx",
-                                                lineNumber: 225,
+                                                lineNumber: 231,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/services/page.tsx",
-                                        lineNumber: 195,
+                                        lineNumber: 201,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, product.id, true, {
                                 fileName: "[project]/app/services/page.tsx",
-                                lineNumber: 175,
+                                lineNumber: 181,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/services/page.tsx",
-                        lineNumber: 173,
+                        lineNumber: 179,
                         columnNumber: 11
                     }, this),
                     getTotalItems() > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -754,34 +831,34 @@ function ServicesPage() {
                                         d: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                                     }, void 0, false, {
                                         fileName: "[project]/app/services/page.tsx",
-                                        lineNumber: 259,
+                                        lineNumber: 265,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/services/page.tsx",
-                                    lineNumber: 258,
+                                    lineNumber: 264,
                                     columnNumber: 15
                                 }, this),
-                                "View Cart (",
+                                "Voir le panier (",
                                 getTotalItems(),
                                 " ",
-                                getTotalItems() === 1 ? 'item' : 'items',
+                                getTotalItems() === 1 ? 'article' : 'articles',
                                 ")"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/services/page.tsx",
-                            lineNumber: 254,
+                            lineNumber: 260,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/services/page.tsx",
-                        lineNumber: 253,
+                        lineNumber: 259,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/services/page.tsx",
-                lineNumber: 167,
+                lineNumber: 173,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -793,28 +870,28 @@ function ServicesPage() {
                             "© ",
                             new Date().getFullYear(),
                             " ",
-                            laundryInfo?.name || 'Clean & Fresh Laundry',
-                            ". All rights reserved."
+                            laundryInfo?.name || 'Pressing Rabat',
+                            ". Tous droits réservés."
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/services/page.tsx",
-                        lineNumber: 270,
+                        lineNumber: 276,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/services/page.tsx",
-                    lineNumber: 269,
+                    lineNumber: 275,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/services/page.tsx",
-                lineNumber: 268,
+                lineNumber: 274,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/services/page.tsx",
-        lineNumber: 114,
+        lineNumber: 120,
         columnNumber: 5
     }, this);
 }

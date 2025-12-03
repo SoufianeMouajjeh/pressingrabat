@@ -1,24 +1,248 @@
-[00:00:01.145] Server  LOG      ✓ Ready in 717ms
-[00:00:18.644] Server  LOG     ⚙️ Config loaded: {}
-[00:00:18.900] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:18.900] Browser LOG     ⚙️ Config loaded: {"hasApiKey":true,"saasUrl":"https://laundry-saas-seven.vercel.app","siteUrl":"https://pressingrabat.vercel.app","slug":"clean-fresh-laundry"}
-[00:00:19.019] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
-[00:00:19.019] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
-[00:00:19.019] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
-[00:00:19.722] Browser LOG     📡 Response status: 200 
-[00:00:19.722] Browser LOG     ✅ Successfully fetched laundry info
-[00:00:19.722] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
-[00:00:32.029] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
-[00:00:32.029] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
-[00:00:32.029] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
-[00:00:32.029] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
-[00:00:32.029] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
-[00:00:32.029] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
-[00:00:32.407] Browser LOG     📡 Response status: 200 
-[00:00:32.407] Browser LOG     ✅ Successfully fetched laundry info
-[00:00:32.407] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
-[00:00:32.407] Browser LOG     📡 Response status: 200 
-[00:00:32.407] Browser LOG     ✅ Successfully fetched laundry info
-[00:00:32.407] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
-[00:00:32.461] Server  ERROR   TypeError: fetch failed
-[00:00:32.476] Server  ERROR   TypeError: fetch failed
+[00:00:01.387] Server  LOG      ✓ Ready in 953ms
+[00:00:29.102] Server  LOG     ⚙️ Config loaded: {}
+[00:00:29.447] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:29.447] Browser LOG     ⚙️ Config loaded: {"hasApiKey":true,"saasUrl":"https://laundry-saas-seven.vercel.app","siteUrl":"https://pressingrabat.vercel.app","slug":"clean-fresh-laundry"}
+[00:00:29.557] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:00:29.557] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:00:29.557] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:00:31.625] Browser LOG     📡 Response status: 200 
+[00:00:31.625] Browser LOG     ✅ Successfully fetched laundry info
+[00:00:31.625] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:00:46.469] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/products","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:00:46.469] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[00:00:46.469] Browser LOG     📦 Fetching products from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[00:00:46.469] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:00:46.469] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:00:46.469] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:00:46.469] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/products","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:00:46.469] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[00:00:46.469] Browser LOG     📦 Fetching products from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[00:00:46.469] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:00:46.469] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:00:46.469] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:00:46.819] Browser LOG     📡 Response status: 200 
+[00:00:46.819] Browser LOG     ✅ Successfully fetched laundry info
+[00:00:46.819] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:00:47.012] Browser LOG     📡 Products response status: 200 
+[00:00:47.012] Browser LOG     📦 Raw API response: {"laundry":{"id":"cmgr4k06c0001w22pbkmzcsql","name":"Clean & Fresh Laundry","slug":"clean-fresh-laundry"},"products":[{"id":"cmiqaic1e000vw26g89htsbej","name":"Linge au Kilo","description":"Linge mélangé facturé au poids","image":"https://clean-fresh-laundry.laundry-app.com/images/bulk.webp","category":"BULK","services":[{"id":"cmiqaic1e000ww26gys0ayxrg","name":"Lavage & Pliage","price":25,"unit":"PER_KG"},{"id":"cmiqaic1f000xw26gyvvgzhpx","name":"Lavage, Séchage & Pliage","price":35,"unit":"PER
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bulk.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/shirt.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/suit.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/pants.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/dress.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/blanket.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bedsheet.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/carpet.webp
+[00:00:47.012] Browser LOG     ✅ Successfully transformed 8 products
+[00:00:47.012] Browser LOG     📡 Products response status: 200 
+[00:00:47.012] Browser LOG     📦 Raw API response: {"laundry":{"id":"cmgr4k06c0001w22pbkmzcsql","name":"Clean & Fresh Laundry","slug":"clean-fresh-laundry"},"products":[{"id":"cmiqaic1e000vw26g89htsbej","name":"Linge au Kilo","description":"Linge mélangé facturé au poids","image":"https://clean-fresh-laundry.laundry-app.com/images/bulk.webp","category":"BULK","services":[{"id":"cmiqaic1e000ww26gys0ayxrg","name":"Lavage & Pliage","price":25,"unit":"PER_KG"},{"id":"cmiqaic1f000xw26gyvvgzhpx","name":"Lavage, Séchage & Pliage","price":35,"unit":"PER
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bulk.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/shirt.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/suit.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/pants.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/dress.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/blanket.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bedsheet.webp
+[00:00:47.012] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/carpet.webp
+[00:00:47.012] Browser LOG     ✅ Successfully transformed 8 products
+[00:00:47.672] Browser LOG     📡 Response status: 200 
+[00:00:47.673] Browser LOG     ✅ Successfully fetched laundry info
+[00:00:47.673] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:00:50.438] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:00:50.438] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:00:50.438] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:00:50.438] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:00:50.438] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:00:50.438] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:00:50.772] Browser LOG     📡 Response status: 200 
+[00:00:50.772] Browser LOG     ✅ Successfully fetched laundry info
+[00:00:50.772] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:00:50.772] Browser LOG     📡 Response status: 200 
+[00:00:50.772] Browser LOG     ✅ Successfully fetched laundry info
+[00:00:50.772] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:02:56.896] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:56.896] Browser LOG     ⚙️ Config loaded: {"hasApiKey":true,"saasUrl":"https://laundry-saas-seven.vercel.app","siteUrl":"https://pressingrabat.vercel.app","slug":"clean-fresh-laundry"}
+[00:02:57.014] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:02:57.014] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:02:57.014] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:02:57.361] Browser LOG     📡 Response status: 200 
+[00:02:57.361] Browser LOG     ✅ Successfully fetched laundry info
+[00:02:57.361] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:02:59.429] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:02:59.429] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:02:59.429] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:02:59.429] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:02:59.429] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:02:59.429] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:02:59.782] Browser LOG     📡 Response status: 200 
+[00:02:59.782] Browser LOG     ✅ Successfully fetched laundry info
+[00:02:59.782] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:02:59.782] Browser LOG     📡 Response status: 200 
+[00:02:59.782] Browser LOG     ✅ Successfully fetched laundry info
+[00:02:59.782] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:03:02.606] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/products","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:03:02.606] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[00:03:02.606] Browser LOG     📦 Fetching products from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[00:03:02.606] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:03:02.606] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:03:02.606] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:03:02.606] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/products","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:03:02.606] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[00:03:02.606] Browser LOG     📦 Fetching products from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[00:03:02.606] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:03:02.606] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:03:02.606] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:03:03.070] Browser LOG     📡 Response status: 200 
+[00:03:03.070] Browser LOG     ✅ Successfully fetched laundry info
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:03:03.070] Browser LOG     📡 Products response status: 200 
+[00:03:03.070] Browser LOG     📦 Raw API response: {"laundry":{"id":"cmgr4k06c0001w22pbkmzcsql","name":"Clean & Fresh Laundry","slug":"clean-fresh-laundry"},"products":[{"id":"cmiqaic1e000vw26g89htsbej","name":"Linge au Kilo","description":"Linge mélangé facturé au poids","image":"https://clean-fresh-laundry.laundry-app.com/images/bulk.webp","category":"BULK","services":[{"id":"cmiqaic1e000ww26gys0ayxrg","name":"Lavage & Pliage","price":25,"unit":"PER_KG"},{"id":"cmiqaic1f000xw26gyvvgzhpx","name":"Lavage, Séchage & Pliage","price":35,"unit":"PER
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bulk.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/shirt.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/suit.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/pants.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/dress.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/blanket.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bedsheet.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/carpet.webp
+[00:03:03.070] Browser LOG     ✅ Successfully transformed 8 products
+[00:03:03.070] Browser LOG     📡 Products response status: 200 
+[00:03:03.070] Browser LOG     📦 Raw API response: {"laundry":{"id":"cmgr4k06c0001w22pbkmzcsql","name":"Clean & Fresh Laundry","slug":"clean-fresh-laundry"},"products":[{"id":"cmiqaic1e000vw26g89htsbej","name":"Linge au Kilo","description":"Linge mélangé facturé au poids","image":"https://clean-fresh-laundry.laundry-app.com/images/bulk.webp","category":"BULK","services":[{"id":"cmiqaic1e000ww26gys0ayxrg","name":"Lavage & Pliage","price":25,"unit":"PER_KG"},{"id":"cmiqaic1f000xw26gyvvgzhpx","name":"Lavage, Séchage & Pliage","price":35,"unit":"PER
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bulk.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/shirt.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/suit.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/pants.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/dress.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/blanket.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bedsheet.webp
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/carpet.webp
+[00:03:03.070] Browser LOG     ✅ Successfully transformed 8 products
+[00:03:03.070] Browser LOG     📡 Response status: 200 
+[00:03:03.070] Browser LOG     ✅ Successfully fetched laundry info
+[00:03:03.070] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:07:38.493] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:38.493] Browser LOG     ⚙️ Config loaded: {"hasApiKey":true,"saasUrl":"https://laundry-saas-seven.vercel.app","siteUrl":"https://pressingrabat.vercel.app","slug":"clean-fresh-laundry"}
+[00:07:38.621] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/products","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:07:38.621] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[00:07:38.621] Browser LOG     📦 Fetching products from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[00:07:38.621] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:07:38.621] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:07:38.621] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:07:39.027] Browser LOG     📡 Response status: 200 
+[00:07:39.027] Browser LOG     ✅ Successfully fetched laundry info
+[00:07:39.027] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:07:39.027] Browser LOG     📡 Products response status: 200 
+[00:07:39.027] Browser LOG     📦 Raw API response: {"laundry":{"id":"cmgr4k06c0001w22pbkmzcsql","name":"Clean & Fresh Laundry","slug":"clean-fresh-laundry"},"products":[{"id":"cmiqaic1e000vw26g89htsbej","name":"Linge au Kilo","description":"Linge mélangé facturé au poids","image":"https://clean-fresh-laundry.laundry-app.com/images/bulk.webp","category":"BULK","services":[{"id":"cmiqaic1e000ww26gys0ayxrg","name":"Lavage & Pliage","price":25,"unit":"PER_KG"},{"id":"cmiqaic1f000xw26gyvvgzhpx","name":"Lavage, Séchage & Pliage","price":35,"unit":"PER
+[00:07:39.027] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bulk.webp
+[00:07:39.027] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/shirt.webp
+[00:07:39.027] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/suit.webp
+[00:07:39.027] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/pants.webp
+[00:07:39.027] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/dress.webp
+[00:07:39.027] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/blanket.webp
+[00:07:39.027] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bedsheet.webp
+[00:07:39.027] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/carpet.webp
+[00:07:39.027] Browser LOG     ✅ Successfully transformed 8 products
+[00:11:13.303] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:11:13.303] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:11:13.303] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:11:13.303] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[00:11:13.303] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:11:13.303] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[00:11:13.696] Browser LOG     📡 Response status: 200 
+[00:11:13.696] Browser LOG     ✅ Successfully fetched laundry info
+[00:11:13.696] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[00:11:13.877] Browser LOG     📡 Response status: 200 
+[00:11:13.877] Browser LOG     ✅ Successfully fetched laundry info
+[00:11:13.877] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[01:24:40.421] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:24:40.421] Browser LOG     ⚙️ Config loaded: {"hasApiKey":true,"saasUrl":"https://laundry-saas-seven.vercel.app","siteUrl":"https://pressingrabat.vercel.app","slug":"clean-fresh-laundry"}
+[01:24:40.557] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:24:40.557] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:24:40.557] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:24:41.323] Browser LOG     📡 Response status: 200 
+[01:24:41.323] Browser LOG     ✅ Successfully fetched laundry info
+[01:24:41.323] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[01:24:43.480] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:24:43.480] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:24:43.480] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:24:43.480] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:24:43.480] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:24:43.480] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:24:43.905] Browser LOG     📡 Response status: 200 
+[01:24:43.905] Browser LOG     ✅ Successfully fetched laundry info
+[01:24:43.905] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[01:24:43.905] Browser LOG     📡 Response status: 200 
+[01:24:43.905] Browser LOG     ✅ Successfully fetched laundry info
+[01:24:43.905] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[01:25:24.554] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/products","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:25:24.554] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[01:25:24.554] Browser LOG     📦 Fetching products from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[01:25:24.554] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:25:24.554] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:24.554] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:24.554] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/products","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:25:24.554] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[01:25:24.554] Browser LOG     📦 Fetching products from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/products
+[01:25:24.554] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:25:24.554] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:24.554] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:25.212] Browser LOG     📡 Response status: 200 
+[01:25:25.212] Browser LOG     ✅ Successfully fetched laundry info
+[01:25:25.212] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[01:25:25.212] Browser LOG     📡 Products response status: 200 
+[01:25:25.212] Browser LOG     📦 Raw API response: {"laundry":{"id":"cmgr4k06c0001w22pbkmzcsql","name":"Clean & Fresh Laundry","slug":"clean-fresh-laundry"},"products":[{"id":"cmiqaic1e000vw26g89htsbej","name":"Linge au Kilo","description":"Linge mélangé facturé au poids","image":"https://clean-fresh-laundry.laundry-app.com/images/bulk.webp","category":"BULK","services":[{"id":"cmiqaic1e000ww26gys0ayxrg","name":"Lavage & Pliage","price":25,"unit":"PER_KG"},{"id":"cmiqaic1f000xw26gyvvgzhpx","name":"Lavage, Séchage & Pliage","price":35,"unit":"PER
+[01:25:25.212] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bulk.webp
+[01:25:25.212] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/shirt.webp
+[01:25:25.212] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/suit.webp
+[01:25:25.212] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/pants.webp
+[01:25:25.212] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/dress.webp
+[01:25:25.212] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/blanket.webp
+[01:25:25.212] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bedsheet.webp
+[01:25:25.212] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/carpet.webp
+[01:25:25.212] Browser LOG     ✅ Successfully transformed 8 products
+[01:25:25.733] Browser LOG     📡 Products response status: 200 
+[01:25:25.733] Browser LOG     📦 Raw API response: {"laundry":{"id":"cmgr4k06c0001w22pbkmzcsql","name":"Clean & Fresh Laundry","slug":"clean-fresh-laundry"},"products":[{"id":"cmiqaic1e000vw26g89htsbej","name":"Linge au Kilo","description":"Linge mélangé facturé au poids","image":"https://clean-fresh-laundry.laundry-app.com/images/bulk.webp","category":"BULK","services":[{"id":"cmiqaic1e000ww26gys0ayxrg","name":"Lavage & Pliage","price":25,"unit":"PER_KG"},{"id":"cmiqaic1f000xw26gyvvgzhpx","name":"Lavage, Séchage & Pliage","price":35,"unit":"PER
+[01:25:25.733] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bulk.webp
+[01:25:25.733] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/shirt.webp
+[01:25:25.733] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/suit.webp
+[01:25:25.733] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/pants.webp
+[01:25:25.733] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/dress.webp
+[01:25:25.733] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/blanket.webp
+[01:25:25.733] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/bedsheet.webp
+[01:25:25.733] Browser LOG     ⚠️ Filtering out invalid image URL: https://clean-fresh-laundry.laundry-app.com/images/carpet.webp
+[01:25:25.733] Browser LOG     ✅ Successfully transformed 8 products
+[01:25:25.733] Browser LOG     📡 Response status: 200 
+[01:25:25.733] Browser LOG     ✅ Successfully fetched laundry info
+[01:25:25.733] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[01:25:26.846] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:25:26.846] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:26.846] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:26.846] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:25:26.846] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:26.846] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:27.159] Browser LOG     📡 Response status: 200 
+[01:25:27.159] Browser LOG     ✅ Successfully fetched laundry info
+[01:25:27.159] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[01:25:27.420] Browser LOG     📡 Response status: 200 
+[01:25:27.420] Browser LOG     ✅ Successfully fetched laundry info
+[01:25:27.420] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[01:25:34.570] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:25:34.570] Browser LOG     ⚙️ Config loaded: {"hasApiKey":true,"saasUrl":"https://laundry-saas-seven.vercel.app","siteUrl":"https://pressingrabat.vercel.app","slug":"clean-fresh-laundry"}
+[01:25:34.715] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:25:34.715] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:34.715] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:35.013] Browser LOG     📡 Response status: 200 
+[01:25:35.013] Browser LOG     ✅ Successfully fetched laundry info
+[01:25:35.013] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[01:25:36.990] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:25:36.990] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:36.991] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:36.991] Browser LOG     🔍 DEBUG - Building URL: {"hasWindow":true,"path":"/api/public/laundry/clean-fresh-laundry/info","saasUrl":"https://laundry-saas-seven.vercel.app"}
+[01:25:36.991] Browser LOG     ✅ Using saasUrl: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:36.991] Browser LOG     🏢 Fetching laundry info from: https://laundry-saas-seven.vercel.app/api/public/laundry/clean-fresh-laundry/info
+[01:25:37.328] Browser LOG     📡 Response status: 200 
+[01:25:37.328] Browser LOG     ✅ Successfully fetched laundry info
+[01:25:37.328] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png
+[01:25:37.328] Browser LOG     📡 Response status: 200 
+[01:25:37.328] Browser LOG     ✅ Successfully fetched laundry info
+[01:25:37.328] Browser LOG     ⚠️ Filtering out invalid image URL: https://example.com/logo.png

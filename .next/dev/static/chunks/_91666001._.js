@@ -51,6 +51,31 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/config.ts [app-client] (ecmascript)");
 ;
+// Known invalid image domains that should be replaced with placeholders
+const INVALID_IMAGE_DOMAINS = [
+    'laundry-app.com',
+    'example.com'
+];
+/**
+ * Sanitize image URL - returns null for invalid domains
+ * This handles cases where the API returns URLs for non-existent domains
+ */ const sanitizeImageUrl = (url)=>{
+    if (!url) return null;
+    try {
+        const urlObj = new URL(url);
+        // Check if the hostname matches any invalid domain
+        for (const invalidDomain of INVALID_IMAGE_DOMAINS){
+            if (urlObj.hostname.endsWith(invalidDomain)) {
+                console.log(`⚠️ Filtering out invalid image URL: ${url}`);
+                return null;
+            }
+        }
+        return url;
+    } catch  {
+        // If URL is relative or malformed, return as-is
+        return url;
+    }
+};
 // Helper function to build full URL
 const getFullUrl = (path)=>{
     console.log('🔍 DEBUG - Building URL:', {
@@ -95,7 +120,12 @@ const fetchLaundryInfo = async ()=>{
         }
         const data = await response.json();
         console.log('✅ Successfully fetched laundry info');
-        return data;
+        // Sanitize logo URLs to filter out invalid domains
+        return {
+            ...data,
+            logo: sanitizeImageUrl(data.logo),
+            logoUrl: sanitizeImageUrl(data.logoUrl)
+        };
     } catch (error) {
         console.error('❌ Fetch error:', error);
         throw error;
@@ -161,13 +191,15 @@ const fetchProducts = async ()=>{
                 }));
             // Get the first service price as default product price
             const defaultPrice = services.length > 0 ? services[0].price : item.price || 0;
+            // Sanitize image URLs to filter out invalid domains
+            const sanitizedImage = sanitizeImageUrl(item.image || item.imageUrl);
             return {
                 id: item.id,
                 name: item.name,
                 description: item.description || null,
                 category: item.category || 'GENERAL',
-                image: item.image || item.imageUrl || null,
-                imageUrl: item.image || item.imageUrl || null,
+                image: sanitizedImage,
+                imageUrl: sanitizedImage,
                 status: item.status || 'ACTIVE',
                 price: defaultPrice,
                 services

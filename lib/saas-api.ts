@@ -3,7 +3,7 @@
  * All requests include the API key for authentication
  */
 
-import { laundryConfig, LaundryInfo, Product, CartItem, CustomerInfo } from './config';
+import { laundryConfig, LaundryInfo, Product, CartItem, CustomerInfo, ProductService } from './config';
 
 // Helper function to build full URL
 const getFullUrl = (path: string): string => {
@@ -70,7 +70,24 @@ export const fetchLaundryInfo = async (): Promise<LaundryInfo> => {
 };
 
 /**
+ * Map service name from SaaS API to expected service type
+ */
+const mapServiceNameToType = (serviceName: string): 'NETTOYAGE' | 'REPASSAGE' | 'NETTOYAGE_A_SEC' => {
+  const lowerName = serviceName.toLowerCase();
+  
+  if (lowerName.includes('repassage') || lowerName.includes('iron')) {
+    return 'REPASSAGE';
+  }
+  if (lowerName.includes('sec') || lowerName.includes('dry')) {
+    return 'NETTOYAGE_A_SEC';
+  }
+  // Default to NETTOYAGE for washing, lavage, cleaning, etc.
+  return 'NETTOYAGE';
+};
+
+/**
  * Fetch all products and services for this laundry
+ * Transforms SaaS API response to the expected format
  */
 export const fetchProducts = async (): Promise<Product[]> => {
   const url = getFullUrl(`/api/public/laundry/${laundryConfig.slug}/products`);
@@ -94,8 +111,51 @@ export const fetchProducts = async (): Promise<Product[]> => {
     }
     
     const data = await response.json();
-    console.log('✅ Successfully fetched', data.length, 'products');
-    return data;
+    console.log('📦 Raw API response:', JSON.stringify(data).substring(0, 500));
+    
+    // Handle both old format (array) and new format (object with products array)
+    let rawProducts: any[];
+    if (Array.isArray(data)) {
+      // Old format: direct array of products
+      rawProducts = data;
+    } else if (data.products && Array.isArray(data.products)) {
+      // New format: { laundry, products, totalProducts, totalServices }
+      rawProducts = data.products;
+    } else {
+      console.error('❌ Unexpected API response format:', data);
+      return [];
+    }
+    
+    // Transform products to expected format
+    const products: Product[] = rawProducts.map((item: any) => {
+      // Transform services to expected format
+      const services: ProductService[] = (item.services || []).map((svc: any) => ({
+        id: svc.id,
+        productId: item.id,
+        service: svc.service || mapServiceNameToType(svc.name || ''),
+        serviceType: svc.service || mapServiceNameToType(svc.name || ''),
+        name: svc.name || svc.service,
+        price: svc.price || item.price || 0,
+      }));
+      
+      // Get the first service price as default product price
+      const defaultPrice = services.length > 0 ? services[0].price : (item.price || 0);
+      
+      return {
+        id: item.id,
+        name: item.name,
+        description: item.description || null,
+        category: item.category || 'GENERAL',
+        image: item.image || item.imageUrl || null,
+        imageUrl: item.image || item.imageUrl || null,
+        status: item.status || 'ACTIVE',
+        price: defaultPrice,
+        services,
+      };
+    });
+    
+    console.log('✅ Successfully transformed', products.length, 'products');
+    return products;
   } catch (error) {
     console.error('❌ Fetch products error:', error);
     throw error;

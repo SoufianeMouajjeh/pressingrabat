@@ -46,20 +46,26 @@ export default function ServicesPage() {
     loadData();
   }, []);
 
-  const getServiceName = (serviceType: string) => {
+  // Get display name for a service - prefer actual name over type
+  const getServiceDisplayName = (service: any) => {
+    // If service has a name field, use it
+    if (service.name) {
+      return service.name;
+    }
+    // Fallback to mapping the service type
     const names: Record<string, string> = {
-      'NETTOYAGE': 'Washing',
-      'REPASSAGE': 'Ironing',
-      'NETTOYAGE_A_SEC': 'Dry Cleaning'
+      'NETTOYAGE': 'Lavage',
+      'REPASSAGE': 'Repassage',
+      'NETTOYAGE_A_SEC': 'Nettoyage à sec'
     };
-    return names[serviceType] || serviceType;
+    return names[service.service] || service.service || 'Service';
   };
 
   const handleAddToCart = (product: Product) => {
     const serviceId = selectedServices[product.id];
     const service = product.services?.find(s => s.id === serviceId);
     
-    if (!service || !service.service) {
+    if (!service) {
       alert('Please select a service');
       return;
     }
@@ -68,8 +74,8 @@ export default function ServicesPage() {
       productId: product.id,
       productName: product.name,
       serviceId: service.id,
-      serviceName: getServiceName(service.service),
-      serviceType: service.service,
+      serviceName: getServiceDisplayName(service),
+      serviceType: service.service || 'NETTOYAGE',
       price: service.price || product.price,
       quantity: 1,
       imageUrl: product.image || undefined
@@ -91,7 +97,7 @@ export default function ServicesPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading products...</p>
+          <p className="mt-4 text-gray-600">Chargement des services...</p>
         </div>
       </div>
     );
@@ -103,7 +109,7 @@ export default function ServicesPage() {
         <div className="text-center">
           <p className="text-red-600 text-xl">{error}</p>
           <Link href="/" className="mt-4 inline-block text-blue-600 hover:underline">
-            Return to Home
+            Retour à l'accueil
           </Link>
         </div>
       </div>
@@ -117,9 +123,9 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3">
-              {laundryInfo?.logo && (
+              {laundryInfo?.logoUrl && (
                 <Image
-                  src={laundryInfo.logo}
+                  src={laundryInfo.logoUrl}
                   alt={laundryInfo.name}
                   width={40}
                   height={40}
@@ -127,13 +133,13 @@ export default function ServicesPage() {
                 />
               )}
               <span className="text-xl font-bold text-gray-900">
-                {laundryInfo?.name || 'Clean & Fresh Laundry'}
+                {laundryInfo?.name || 'Pressing Rabat'}
               </span>
             </Link>
             
             <div className="flex items-center space-x-6">
               <Link href="/" className="text-gray-700 hover:text-blue-600 transition">
-                Home
+                Accueil
               </Link>
               <Link href="/services" className="text-blue-600 font-semibold">
                 Services
@@ -156,9 +162,9 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <div className="bg-blue-600 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4">Our Services</h1>
+          <h1 className="text-4xl font-bold mb-4">Nos Services</h1>
           <p className="text-xl text-blue-100">
-            Professional laundry and dry cleaning services for all your needs
+            Services professionnels de pressing et nettoyage à sec
           </p>
         </div>
       </div>
@@ -167,7 +173,7 @@ export default function ServicesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {products.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">No products available at the moment.</p>
+            <p className="text-gray-600 text-lg">Aucun service disponible pour le moment.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -202,7 +208,7 @@ export default function ServicesPage() {
                   {product.services && product.services.length > 0 && (
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Select Service:
+                        Choisir un service:
                       </label>
                       <select
                         value={selectedServices[product.id] || ''}
@@ -214,7 +220,7 @@ export default function ServicesPage() {
                       >
                         {product.services.map(service => (
                           <option key={service.id} value={service.id}>
-                            {getServiceName(service.service)} - ${(service.price || product.price).toFixed(2)}
+                            {getServiceDisplayName(service)} - {(service.price || product.price).toFixed(2)} MAD
                           </option>
                         ))}
                       </select>
@@ -236,10 +242,10 @@ export default function ServicesPage() {
                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        Added to Cart!
+                        Ajouté au panier!
                       </span>
                     ) : (
-                      'Add to Cart'
+                      'Ajouter au panier'
                     )}
                   </button>
                 </div>
@@ -258,7 +264,7 @@ export default function ServicesPage() {
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
-              View Cart ({getTotalItems()} {getTotalItems() === 1 ? 'item' : 'items'})
+              Voir le panier ({getTotalItems()} {getTotalItems() === 1 ? 'article' : 'articles'})
             </Link>
           </div>
         )}
@@ -267,7 +273,7 @@ export default function ServicesPage() {
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-8 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; {new Date().getFullYear()} {laundryInfo?.name || 'Clean & Fresh Laundry'}. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {laundryInfo?.name || 'Pressing Rabat'}. Tous droits réservés.</p>
         </div>
       </footer>
     </div>
